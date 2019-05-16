@@ -21,12 +21,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="아이디"
-            android:id="@+id/logid"/>
+            android:id="@+id/logid"
+            android:onClick="Onclick"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호"
-            android:id="@+id/logpw"/>
+            android:id="@+id/logpw"
+            android:onClick="Onclicklog"/>
 
     </LinearLayout>
 
@@ -45,7 +47,8 @@
             android:layout_weight="1"
             android:text="로그인"
             android:id="@+id/loginBtn"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclicklog"/>
 
         <Button
             android:layout_width="0dp"

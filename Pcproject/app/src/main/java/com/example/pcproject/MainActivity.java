@@ -53,4 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onContextItemSelected(item);
     }
+    public void Onclick(View v){
+
+    }
 }
