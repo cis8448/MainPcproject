@@ -8,6 +8,16 @@ public class paybean {
     String PayCate; // 상품카테고리
     String ProName; // 상품 이름
     String Proprice;// 상품 가격
+    int imgid; // 상품이미지 경로
+    public int getImgid() {
+        return imgid;
+    }
+
+    public void setImgid(int imgid) {
+        this.imgid = imgid;
+    }
+
+
 
     public String getPayId() {
         return PayId;
