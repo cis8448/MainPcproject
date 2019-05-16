@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:andriod="http://schemas.android.com/apk/res/android">
+    <solid andriod:color="#ffffff" />
+    <stroke
+        andriod:width="1sp"
+        andriod:color="#000000"/>
+</shape>
+
+<!--
+사용가능/예약가능 좌석
+-->
