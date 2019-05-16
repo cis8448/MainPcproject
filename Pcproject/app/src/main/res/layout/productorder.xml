@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="한조 PC방 상품 주문"
+        android:gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textColor="#004ED4"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/ramen1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="라면"
+            android:layout_weight="1"
+            android:background="@drawable/blankseat"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="커피"
+            android:layout_weight="1"
+            android:background="@drawable/blankseat"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="밥"
+            android:layout_weight="1"
+            android:background="@drawable/blankseat"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="음료"
+            android:layout_weight="1"
+            android:background="@drawable/blankseat"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="기타"
+            android:layout_weight="1"
+            android:background="@drawable/blankseat"/>
+    </LinearLayout>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:numColumns="4"
+        android:id="@+id/grid">
+    </GridView>
+
+    <Button
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:text="결제하기"
+        android:background="@drawable/blankseat"/>
+
+
+</LinearLayout>
