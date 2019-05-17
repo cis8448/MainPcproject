@@ -32,6 +32,14 @@ public class MemberDAO extends SQLiteOpenHelper {
                         "RETIME NVARCHAR(6)," +
                         "BIRTH NVARCHAR(6))"
                 );
+//        db.execSQL("INSERT INTO MEMBERDB VALUES(" +
+//                "'cis8448'," +
+//                "'1234'," +
+//                "'최인수'," +
+//                "'01000000000'," +
+//                "null," +
+//                "'950103')"
+//        );
     }
 
     @Override
