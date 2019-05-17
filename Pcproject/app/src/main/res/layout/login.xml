@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#9FF7DE00">
+    android:background="#9FF7DE00"
+    tools:context=".login">
 
     <ImageView
         android:layout_width="match_parent"
@@ -21,14 +25,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="아이디"
-            android:id="@+id/logid"
-            android:onClick="Onclick"/>
+            android:id="@+id/logid" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호"
             android:id="@+id/logpw"
-            android:onClick="Onclicklog"/>
+            />
 
     </LinearLayout>
 
@@ -56,7 +59,8 @@
             android:layout_weight="1"
             android:text="회원가입"
             android:id="@+id/memberaddbtn"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclicklog"/>
 
 
 
