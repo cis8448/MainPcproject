@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".myinfo">
+    tools:context=".myinfo"
+    android:background="@drawable/s1">
 
     <TextView
         android:layout_width="match_parent"
