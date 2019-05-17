@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="760px"
+    android:orientation="vertical"
     android:padding="30dp"
-    android:background="#A4A4A7">
+    android:background="#FAFFEB3B"
+    android:id="@+id/zz">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="한조 PC방 좌석 정보"
         android:gravity="center_horizontal"
         android:textSize="30dp"
-        android:textColor="#004ED4"
-        />
+        android:textColor="#000000"/>
 
     <!--
     사용중인 좌석 == 하늘색
@@ -27,8 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        >
+        android:layout_marginTop="50dp">
 
         <Button
             android:layout_width="50dp"
@@ -103,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="빈 좌석"
-                android:textColor="#ffffff"/>
+                android:textColor="#000000"/>
             <Button
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
@@ -222,6 +227,7 @@
             android:layout_height="50dp"
             android:background="@drawable/usedseat"/>
     </LinearLayout>
+
 
 
 </LinearLayout>
