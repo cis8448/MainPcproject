@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:background="#59029DF1">
+        android:background="@drawable/t1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="라면  "/>
+                        android:text="라면  " />
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -89,18 +89,21 @@
                         android:layout_height="wrap_content"
                         android:text="상품명       : "
                         android:textSize="20dp"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_marginBottom="20dp"
+                        android:textColor="#FF5722"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="가격       : "
                         android:textSize="20dp"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_marginBottom="20dp"
+                        android:textColor="#FF5722"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="수량       : "
-                        android:textSize="20dp"/>
+                        android:textSize="20dp"
+                        android:textColor="#FF5722"/>
                 </LinearLayout>
 
                 <LinearLayout
