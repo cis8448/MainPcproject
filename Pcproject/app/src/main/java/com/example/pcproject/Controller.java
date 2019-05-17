@@ -41,10 +41,10 @@ public class Controller extends AppCompatActivity {
          int count = memberDAO.selectLogin(db,intentid,intentpw);
          switch (count){
              case 0:
-
+                sub(activity,"ToastLogFail");
                  break;
              case 1:
-                mybean=memberDAO.selectID(db,intentid);
+                mybean = memberDAO.selectID(db,intentid);
                 if(mybean.getId().equals("admin")){
                    sub(activity,"adminLogin");
                 }else{
@@ -56,6 +56,9 @@ public class Controller extends AppCompatActivity {
      if(state.equals("ClearLogin")){
          ((MainActivity)mainAct).MyMember = mybean;
          activity.finish();
+
+     }
+     if(state.equals("ToastLogFail")){
 
      }
     }

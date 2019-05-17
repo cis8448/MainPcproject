@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         con.setActivity(this);
         btn1 = findViewById(R.id.btn1);
         registerForContextMenu(btn1);
+        btn1.setLongClickable(false);
+
     }
 
     @Override
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
     public void Onclick(View v){
-
+        this.openContextMenu(btn1);
     }
 
     @Override

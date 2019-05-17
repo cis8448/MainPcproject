@@ -20,7 +20,6 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.login);
 
         con = Controller.getInstance();
-        con.setActivity(this);
 
         idtext = findViewById(R.id.logid);
         pwtext = findViewById(R.id.logpw);

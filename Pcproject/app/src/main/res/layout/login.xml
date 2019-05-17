@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:hint="아이디 입력"
             android:id="@+id/logid"
-            android:onClick="Onclick"
             android:background="@drawable/line"
             android:singleLine="true"
             />
