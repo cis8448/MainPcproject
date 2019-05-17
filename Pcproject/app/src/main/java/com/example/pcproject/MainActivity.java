@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 if(item.getTitle().equals("내정보")) {
                     con.sub(MainActivity.this, MYINFO);
+                }
                 break;
             case 4:
                 break;
