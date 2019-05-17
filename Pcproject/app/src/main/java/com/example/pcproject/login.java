@@ -4,15 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class login extends AppCompatActivity {
     EditText idtext, pwtext;
     Controller con;
+    Button memberaddbtn;
+
     final String LOGIN = "selLogin";
     final String ID = "txtid";
     final String PW = "txtpw";
+    final String memberadd = "sign up";
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,8 @@ public class login extends AppCompatActivity {
 
         idtext = findViewById(R.id.logid);
         pwtext = findViewById(R.id.logpw);
+        memberaddbtn = findViewById(R.id.memberaddbtn);
+
 }
     public void Onclicklog(View v){
         String idtxt = idtext.getText().toString();
@@ -35,4 +41,6 @@ public class login extends AppCompatActivity {
             con.sub(login.this,LOGIN);
         }
     }
+
+
 }
