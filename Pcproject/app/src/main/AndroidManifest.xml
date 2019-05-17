@@ -17,12 +17,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="com.example.pcproject.login"></action>
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+
+        <activity android:name=".myinfo">
+            <intent-filter>
+                <action android:name="com.example.pcproject.myinfo"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name=".memberadd">
+            <intent-filter>
+                <action android:name="com.example.pcproject.memberadd"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>

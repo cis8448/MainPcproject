@@ -38,6 +38,10 @@ public class Controller extends AppCompatActivity {
          Intent loginOpen  = new Intent("com.example.pcproject.login");
          activity.startActivity(loginOpen);
      }
+        if(state.equals("myinfo")){
+            Intent myinfoOpen  = new Intent("com.example.pcproject.myinfo");
+            activity.startActivity(myinfoOpen);
+        }
      if(state.equals("selLogin")){
          int count = memberDAO.selectLogin(db,intentid,intentpw);
          switch (count){
@@ -58,6 +62,10 @@ public class Controller extends AppCompatActivity {
          ((MainActivity)mainAct).MyMember = mybean;
          activity.finish();
 
+     }
+     if(state.equals("signup")){
+         Intent signupOpen  = new Intent("com.example.pcproject.memberadd");
+         activity.startActivity(signupOpen);
      }
      
     }
