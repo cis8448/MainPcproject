@@ -44,7 +44,7 @@ public class Controller extends AppCompatActivity {
 
                  break;
              case 1:
-                mybean=memberDAO.selectID(db,intentid);
+                mybean = memberDAO.selectID(db,intentid);
                 if(mybean.getId().equals("admin")){
                    sub(activity,"adminLogin");
                 }else{
