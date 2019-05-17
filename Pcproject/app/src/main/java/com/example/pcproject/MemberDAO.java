@@ -1,18 +1,10 @@
 package com.example.pcproject;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.CharArrayBuffer;
-import android.database.ContentObserver;
 import android.database.Cursor;
-import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.os.Bundle;
 
-import java.util.ArrayList;
 
 public class MemberDAO extends SQLiteOpenHelper {
     Cursor cur;
@@ -32,6 +24,14 @@ public class MemberDAO extends SQLiteOpenHelper {
                         "RETIME NVARCHAR(6)," +
                         "BIRTH NVARCHAR(6))"
                 );
+//        db.execSQL("INSERT INTO MEMBERDB VALUES(" +
+//                "'cis8448'," +
+//                "'1234'," +
+//                "'최인수'," +
+//                "'01000000000'," +
+//                "null," +
+//                "'950103')"
+//        );
     }
 
     @Override
