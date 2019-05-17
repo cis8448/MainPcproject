@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         con.setActivity(this);
         btn1 = findViewById(R.id.btn1);
         registerForContextMenu(btn1);
-        Intent in = getIntent();
     }
 
     @Override
