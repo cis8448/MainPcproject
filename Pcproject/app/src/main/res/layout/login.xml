@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
     android:background="@drawable/a2"
     >
+=======
+    android:background="#9FF7DE00"
+    tools:context=".login">
+>>>>>>> 2e2589727ae8d50f59f189dddd93e9ba713869c5
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,6 +41,7 @@
             android:layout_marginTop="110dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:hint="아이디 입력"
             android:id="@+id/logid"
             android:onClick="Onclick"
@@ -40,16 +49,24 @@
             />
 
 
+=======
+            android:hint="아이디"
+            android:id="@+id/logid" />
+>>>>>>> 2e2589727ae8d50f59f189dddd93e9ba713869c5
         <EditText
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호 입력"
             android:id="@+id/logpw"
+<<<<<<< HEAD
             android:onClick="Onclicklog"
             android:background="@drawable/line"
             />
 
+=======
+            />
+>>>>>>> 2e2589727ae8d50f59f189dddd93e9ba713869c5
 
     </LinearLayout>
 
@@ -77,7 +94,8 @@
             android:layout_weight="1"
             android:text="회원가입"
             android:id="@+id/memberaddbtn"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclicklog"/>
 
 
 

@@ -1,15 +1,18 @@
 package com.example.pcproject;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Memberbeen MyMember = new Memberbeen();
-    Controller con = new Controller();
+    public Memberbeen MyMember = new Memberbeen();
+    Controller con;
     Button btn1;
 
     final String LOGIN = "login";
@@ -17,8 +20,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        con = Controller.getInstance();
+        con.setActivity(this);
         btn1 = findViewById(R.id.btn1);
         registerForContextMenu(btn1);
+        Intent in = getIntent();
     }
 
     @Override
@@ -55,5 +61,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void Onclick(View v){
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getApplicationContext(), MyMember.getName(), Toast.LENGTH_SHORT).show();
     }
 }
