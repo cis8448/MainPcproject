@@ -16,7 +16,7 @@ public class login extends AppCompatActivity {
     final String LOGIN = "selLogin";
     final String ID = "txtid";
     final String PW = "txtpw";
-    final String memberadd = "sign up";
+    final String memberadd = "signup";
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,9 @@ public class login extends AppCompatActivity {
             con.intentpw = pwtxt;
             con.sub(login.this,LOGIN);
         }
+    }
+    public void onclickmemberadd(View v){
+        con.sub(login.this,memberadd);
     }
 
 

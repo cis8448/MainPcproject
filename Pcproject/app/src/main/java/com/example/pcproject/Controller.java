@@ -63,6 +63,10 @@ public class Controller extends AppCompatActivity {
          activity.finish();
 
      }
+     if(state.equals("signup")){
+         Intent signupOpen  = new Intent("com.example.pcproject.memberadd");
+         activity.startActivity(signupOpen);
+     }
      
     }
 }

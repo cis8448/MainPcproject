@@ -31,6 +31,12 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".memberadd">
+            <intent-filter>
+                <action android:name="com.example.pcproject.memberadd"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
 
 
