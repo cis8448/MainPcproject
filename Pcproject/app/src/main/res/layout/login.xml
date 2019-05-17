@@ -38,6 +38,7 @@
             android:hint="아이디 입력"
             android:id="@+id/logid"
             android:background="@drawable/line"
+            android:singleLine="true"
             />
 
 
@@ -50,6 +51,7 @@
             android:id="@+id/logpw"
             android:onClick="Onclicklog"
             android:background="@drawable/line"
+            android:singleLine="true"
             />
 
     </LinearLayout>
