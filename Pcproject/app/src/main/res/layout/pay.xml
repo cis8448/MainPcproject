@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="★상품 주문 결제 선택★"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:textColor="#4CAF50"/>
 
     </LinearLayout>
     <LinearLayout
@@ -63,11 +64,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:hint="주문요청내역 입력"/>
+            android:hint="주문요청내역 입력"
+            android:background="@drawable/line"
+            />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="결제하기"/>
+            android:text="결제하기"
+            android:background="#FFC107"/>
 
 
     </LinearLayout>

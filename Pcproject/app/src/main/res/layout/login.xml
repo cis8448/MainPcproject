@@ -2,35 +2,56 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#9FF7DE00"
-    tools:context=".login">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="50dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/hanjo" />
+    android:background="@drawable/a2"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PC방 로그인"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <EditText
+            android:layout_marginTop="110dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="아이디"
-            android:id="@+id/logid" />
+
+            android:hint="아이디 입력"
+            android:id="@+id/logid"
+            android:onClick="Onclick"
+            android:background="@drawable/line"
+            />
+
+
+
         <EditText
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호"
+            android:hint="비밀번호 입력"
             android:id="@+id/logpw"
+            android:onClick="Onclicklog"
+            android:background="@drawable/line"
             />
 
     </LinearLayout>
@@ -40,7 +61,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="45dp"
         android:orientation="horizontal"
         >
 
