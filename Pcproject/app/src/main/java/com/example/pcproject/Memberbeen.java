@@ -1,6 +1,8 @@
 package com.example.pcproject;
 
-public class Memberbeen {
+import java.io.Serializable;
+
+public class Memberbeen implements Serializable {
     String Id;     //아이디
     String Pass;   //패스워드
     String Name;   //이름

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class Controller extends AppCompatActivity {
      }
         if(state.equals("myinfo")){
             Intent myinfoOpen  = new Intent("com.example.pcproject.myinfo");
+            myinfoOpen.putExtra("mydata", mybean);
             activity.startActivity(myinfoOpen);
         }
      if(state.equals("selLogin")){
