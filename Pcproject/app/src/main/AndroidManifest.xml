@@ -37,6 +37,12 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".seatdata">
+            <intent-filter>
+                <action android:name="com.example.pcproject.seatdata"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
 
     </application>
