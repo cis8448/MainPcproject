@@ -18,6 +18,7 @@ public class myinfo extends AppCompatActivity {
     Button midUpdate, mTimeAdd, mSeatrese, midRemove;
     public TextView tvId, tvPw, tvName, tvHp, tvTime;
     String myinfoupdate = "myinfoupdate";
+    String addtime = "addtime";
     String myremove = "myremove";
     public Memberbeen memberbeen;
 
@@ -57,6 +58,9 @@ public class myinfo extends AppCompatActivity {
     public void Onclickremove(View v) {
         con.sub(myinfo.this, myremove);
 
+    }
+    public void OnclickTimeadd(View v){
+        con.sub(myinfo.this,addtime);
     }
 
 }
