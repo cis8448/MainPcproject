@@ -96,17 +96,32 @@ public class Controller extends AppCompatActivity {
             mybean.setPass(dlg.infopw);
             mybean.setPhone(dlg.infohp);
             mybean.setBirth(dlg.infobr);
+            ((myinfo)activity).tvPw.setText(dlg.infopw);
+            ((myinfo)activity).tvHp.setText(dlg.infohp);
             ((MainActivity) mainAct).MyMember = mybean;
+            ((myinfo)activity).memberbeen = mybean;
 
         }//내정보 수정처리
-        if(state.equals("addtime")){
-            dlg.addTimeDialog(activity);
+        if(state.equals("myremove")){
+            dlg.removeDialog(activity);
         }
-        if(state.equals("addtimefinal")){
-            mybean = ((myinfo)activity).memberbeen;
-            memberDAO.updateTime(db,mybean.getId(),mybean.getRetime());
-            Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
-            ((myinfo)activity).tvTime.setText(mybean.getRetime());
+        if(state.equals("myremoving")){
+            memberDAO.deleteMember(db,mybean.getId());
+            ((MainActivity)mainAct).MyMember = null;
+            ((MainActivity)mainAct).MyMember = new Memberbeen();
+            activity.finish();
+            Toast.makeText(activity, "회원 탈퇴 되었습니다잉", Toast.LENGTH_SHORT).show();
+        }
+        if(state.equals("seatreve")){
+
+        }
+
+
+        if(state.equals("seatdata")){
+            Intent seatdataOpen  = new Intent("com.example.pcproject.seatdata");
+            activity.startActivity(seatdataOpen);
+
         }
     }
+
 }

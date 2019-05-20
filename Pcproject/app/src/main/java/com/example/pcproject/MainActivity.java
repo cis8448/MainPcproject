@@ -2,11 +2,14 @@ package com.example.pcproject;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
     public Memberbeen MyMember = new Memberbeen();
     Controller con;
     Button btn1;
-
+    FragmentMain fmain = new FragmentMain();
     final String LOGIN = "login";
     final String MYINFO = "myinfo";
+    final String SEATDATA = "seatdata";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         btn1 = findViewById(R.id.btn1);
         registerForContextMenu(btn1);
         btn1.setLongClickable(false);
+        FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
+        ftrans.replace(R.id.frag,fmain);
+        ftrans.commit();
 
     }
 
@@ -63,9 +70,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
+                con.sub(MainActivity.this,SEATDATA);
                 break;
             case 3:
-                    con.sub(MainActivity.this, MYINFO);
+                con.sub(MainActivity.this,MYINFO);
                 break;
             case 4:
                 Toast.makeText(this,  MyMember.getName()+"님 로그아웃 되셨습니다", Toast.LENGTH_SHORT).show();
@@ -84,4 +92,5 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Toast.makeText(getApplicationContext(), MyMember.getPhone(), Toast.LENGTH_SHORT).show();
     }
+
 }

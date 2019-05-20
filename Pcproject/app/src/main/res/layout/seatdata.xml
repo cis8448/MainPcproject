@@ -36,23 +36,28 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/reseseat"/>
+            android:background="@drawable/reseseat"
+            android:onClick="Onclickseat"/>
     </LinearLayout>
 
     <!--
@@ -67,23 +72,28 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/reseseat"/>
+            android:background="@drawable/reseseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/reseseat"/>
+            android:background="@drawable/reseseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
     </LinearLayout>
 
     <!--
@@ -177,23 +187,28 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/reseseat"/>
+            android:background="@drawable/reseseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/reseseat"/>
+            android:background="@drawable/reseseat"
+            android:onClick="Onclickseat"/>
     </LinearLayout>
 
     <!--
@@ -207,23 +222,28 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:onClick="Onclickseat"/>
     </LinearLayout>
 
 

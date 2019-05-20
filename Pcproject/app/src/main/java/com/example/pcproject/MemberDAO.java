@@ -98,4 +98,10 @@ public class MemberDAO extends SQLiteOpenHelper {
         db.execSQL("UPDATE MEMBERDB " + "SET RETIME = '" + Retime + "' WHERE ID = '" + Id + "'");
         db.close();
     }
+
+    public void deleteMember(SQLiteDatabase db, String Id){
+        db.execSQL("DELETE FROM MEMBERDB WHERE ID = '" + Id + "'" );
+        db.close();
+
+    }
 }
