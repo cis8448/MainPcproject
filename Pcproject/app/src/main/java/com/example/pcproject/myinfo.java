@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class myinfo extends AppCompatActivity {
     Controller con;
     Button midUpdate, mTimeAdd, mSeatrese, midRemove;
-    TextView tvId, tvPw, tvName, tvHp, tvTime;
+    public TextView tvId, tvPw, tvName, tvHp, tvTime;
     String myinfoupdate = "myinfoupdate";
     String myremove = "myremove";
     public Memberbeen memberbeen;
@@ -58,5 +58,6 @@ public class myinfo extends AppCompatActivity {
         con.sub(myinfo.this, myremove);
 
     }
+
 }
 

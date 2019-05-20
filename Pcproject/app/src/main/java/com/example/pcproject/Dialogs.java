@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 public class Dialogs {
 
-    View UpdateView;
+    View UpdateView, ReserveView;
     EditText UpPass, UpPhone, UpBirth;
     Controller con;
     public String infopw;
@@ -49,7 +49,6 @@ public class Dialogs {
                 }
                 //다 끝나고 con.sub 실행
 
-                
                 con.sub(act, "myinfoupdating");
 
             }
@@ -70,5 +69,35 @@ public class Dialogs {
             }
         });
         removeDlg.show();
+    }
+    public void reserveDialog(final Activity act) {
+        con = Controller.getInstance();
+        ReserveView = View.inflate(act, R.layout.seatreserve, null);
+        mybeen = ((myinfo) act).memberbeen;
+        AlertDialog.Builder reserveDlg = new AlertDialog.Builder(act);
+        reserveDlg.setView(ReserveView);
+
+        reserveDlg.setNegativeButton("취소", null);
+        reserveDlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (infopw.equals("")) {
+                    //EditText 가 공백일때
+                    infopw = mybeen.getPass();
+                }
+                if (infohp.equals("")) {
+                    infohp = mybeen.getPhone();
+                }
+                if (infobr.equals("")) {
+                    infobr = mybeen.getBirth();
+                }
+                //다 끝나고 con.sub 실행
+
+                con.sub(act, "myinfoupdating");
+
+            }
+        });
+        reserveDlg.show();
     }
 }

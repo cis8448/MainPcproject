@@ -96,7 +96,10 @@ public class Controller extends AppCompatActivity {
             mybean.setPass(dlg.infopw);
             mybean.setPhone(dlg.infohp);
             mybean.setBirth(dlg.infobr);
+            ((myinfo)activity).tvPw.setText(dlg.infopw);
+            ((myinfo)activity).tvHp.setText(dlg.infohp);
             ((MainActivity) mainAct).MyMember = mybean;
+            ((myinfo)activity).memberbeen = mybean;
 
         }//내정보 수정처리
         if(state.equals("myremove")){
@@ -109,6 +112,10 @@ public class Controller extends AppCompatActivity {
             activity.finish();
             Toast.makeText(activity, "회원 탈퇴 되었습니다잉", Toast.LENGTH_SHORT).show();
         }
+        if(state.equals("seatreve")){
+
+        }
+
 
     }
 }
