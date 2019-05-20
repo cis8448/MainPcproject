@@ -99,6 +99,16 @@ public class Controller extends AppCompatActivity {
             ((MainActivity) mainAct).MyMember = mybean;
 
         }//내정보 수정처리
+        if(state.equals("myremove")){
+            dlg.removeDialog(activity);
+        }
+        if(state.equals("myremoving")){
+            memberDAO.deleteMember(db,mybean.getId());
+            ((MainActivity)mainAct).MyMember = null;
+            ((MainActivity)mainAct).MyMember = new Memberbeen();
+            activity.finish();
+            Toast.makeText(activity, "회원 탈퇴 되었습니다잉", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

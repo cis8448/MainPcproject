@@ -48,11 +48,27 @@ public class Dialogs {
                     infobr = mybeen.getBirth();
                 }
                 //다 끝나고 con.sub 실행
+
+                
                 con.sub(act, "myinfoupdating");
 
             }
         });
         UpdateDlg.show();
 
+    }
+
+    public void removeDialog(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder removeDlg = new AlertDialog.Builder(act);
+        removeDlg.setTitle("정말 탈퇴하실겁니까? 예?");
+        removeDlg.setNegativeButton("취소", null);
+        removeDlg.setPositiveButton("탈퇴", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                con.sub(act, "myremoving");
+            }
+        });
+        removeDlg.show();
     }
 }

@@ -50,7 +50,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/usedseat"
                 android:text="회원 탈퇴"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="Onclickremove"/>
 
         </LinearLayout>
 
