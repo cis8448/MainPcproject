@@ -112,7 +112,6 @@ public class Controller extends AppCompatActivity {
             activity.finish();
             Toast.makeText(activity, "회원 탈퇴 되었습니다잉", Toast.LENGTH_SHORT).show();
         }
-
         if(state.equals("seatreve")){
             Intent seatdataOpen  = new Intent("com.example.pcproject.seatdata");
             activity.startActivity(seatdataOpen);
