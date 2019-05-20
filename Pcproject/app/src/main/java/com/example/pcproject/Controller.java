@@ -100,5 +100,11 @@ public class Controller extends AppCompatActivity {
 
         }//내정보 수정처리
 
+        if(state.equals("seatdata")){
+            Intent seatdataOpen  = new Intent("com.example.pcproject.seatdata");
+            activity.startActivity(seatdataOpen);
+
+        }
     }
+
 }

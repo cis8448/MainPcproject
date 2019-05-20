@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String LOGIN = "login";
     final String MYINFO = "myinfo";
+    final String SEATDATA = "seatdata";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
+                con.sub(MainActivity.this,SEATDATA);
                 break;
             case 3:
-                    con.sub(MainActivity.this, MYINFO);
+                con.sub(MainActivity.this,MYINFO);
                 break;
             case 4:
                 Toast.makeText(this,  MyMember.getName()+"님 로그아웃 되셨습니다", Toast.LENGTH_SHORT).show();
@@ -84,4 +86,5 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Toast.makeText(getApplicationContext(), MyMember.getPhone(), Toast.LENGTH_SHORT).show();
     }
+
 }
