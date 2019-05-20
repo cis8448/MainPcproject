@@ -21,10 +21,13 @@ public class MainActivity extends AppCompatActivity {
     FragmentMain fmain = new FragmentMain();
     final String LOGIN = "login";
     final String MYINFO = "myinfo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         con = Controller.getInstance();
         con.setActivity(this);
         btn1 = findViewById(R.id.btn1);
@@ -68,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
             case 2:
                 break;
             case 3:
-                if(item.getTitle().equals("내정보")) {
                     con.sub(MainActivity.this, MYINFO);
-                }
                 break;
             case 4:
                 Toast.makeText(this,  MyMember.getName()+"님 로그아웃 되셨습니다", Toast.LENGTH_SHORT).show();
@@ -87,6 +88,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(getApplicationContext(), MyMember.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), MyMember.getPhone(), Toast.LENGTH_SHORT).show();
     }
 }

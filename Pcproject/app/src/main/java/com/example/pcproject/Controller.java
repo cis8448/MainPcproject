@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class Controller extends AppCompatActivity {
@@ -13,8 +14,12 @@ public class Controller extends AppCompatActivity {
     SQLiteDatabase db;
     public String intentid;
     public String intentpw;
-    Memberbeen mybean;
+    public String UpdateItPw;
+    public String UpdateItPh;
+    public String UpdateItBr;
+    public Memberbeen mybean;
     Activity mainAct;
+    Dialogs dlg = new Dialogs();
     static Controller controller;
 
     private Controller(){
@@ -22,29 +27,30 @@ public class Controller extends AppCompatActivity {
     }
 
     public static Controller getInstance(){
-        if(controller == null){
-            controller = new Controller();
-        }
-        return controller;
-    }
+            if(controller == null){
+                controller = new Controller();
+            }
+            return controller;
+    }//인스턴스 불러오기
 
     public void setActivity(Activity act){
         mainAct = act;
-    }
+    }//액티비티저장
 
     public void sub(Activity activity ,String state){
         memberDAO = new MemberDAO(activity);
         db = memberDAO.getWritableDatabase();
-     if(state.equals("login")){
+
+        if(state.equals("login")){
          Intent loginOpen  = new Intent("com.example.pcproject.login");
          activity.startActivity(loginOpen);
-     }
+     }//로그인 화면 띄우기
         if(state.equals("myinfo")){
             Intent myinfoOpen  = new Intent("com.example.pcproject.myinfo");
-            myinfoOpen.putExtra("mydata", mybean);
+            myinfoOpen.putExtra("OBJECT", mybean);
             activity.startActivity(myinfoOpen);
-        }
-     if(state.equals("selLogin")){
+        }//내정보창 띄우기
+        if(state.equals("selLogin")){
          int count = memberDAO.selectLogin(db,intentid,intentpw);
          switch (count){
              case 0:
@@ -59,16 +65,40 @@ public class Controller extends AppCompatActivity {
                 }
                  break;
          }
-     }
-     if(state.equals("ClearLogin")){
+     }//로그인 처리
+        if(state.equals("ClearLogin")){
          ((MainActivity)mainAct).MyMember = mybean;
          activity.finish();
 
-     }
-     if(state.equals("signup")){
+     }//로그인 완료
+        if(state.equals("signup")){
          Intent signupOpen  = new Intent("com.example.pcproject.memberadd");
          activity.startActivity(signupOpen);
-     }
-     
+     }//회원가입 화면 띄우기
+        if(state.equals("signing")){
+         String id = ((memberadd)activity).joinid.getText().toString();
+         int se = memberDAO.seletoverlap(db,id);
+         if(se != 0){
+             Toast.makeText(activity, "아이디가 중복되었습니다.", Toast.LENGTH_SHORT).show();
+         }
+         else {
+             Memberbeen nemem = ((memberadd)activity).memberbeen;
+             memberDAO.insertMember(db,nemem);
+             activity.finish();
+             Toast.makeText(activity, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+             }
+         }//회원가입처리
+        if(state.equals("myinfoupdate")) {
+            dlg.myinfoDialog(activity);
+        }//내정보 수정처리
+        if(state.equals("myinfoupdating")){
+            memberDAO.updateUser(db,mybean.getId(),dlg.infopw,dlg.infohp,dlg.infobr);
+            mybean.setPass(dlg.infopw);
+            mybean.setPhone(dlg.infohp);
+            mybean.setBirth(dlg.infobr);
+            ((MainActivity) mainAct).MyMember = mybean;
+
+        }//내정보 수정처리
+
     }
 }
