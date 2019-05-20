@@ -81,10 +81,20 @@ public class MemberDAO extends SQLiteOpenHelper {
     }
 
     public void insertMember(SQLiteDatabase db, Memberbeen mem) {
-         db.execSQL("INSERT INTO MEMBERDB VALUES('"+mem.getId() +"','"+mem.getPass()+"','"+mem.getName()+"'," +
-                 "'"+mem.getPhone()+"','"+mem.getRetime()+"','"+mem.getBirth()+"')");
-         db.close();
+        db.execSQL("INSERT INTO MEMBERDB VALUES('" + mem.getId() + "','" + mem.getPass() + "','" + mem.getName() + "'," +
+                "'" + mem.getPhone() + "','" + mem.getRetime() + "','" + mem.getBirth() + "')");
+        db.close();
 
     }
 
+    public void updateUser(SQLiteDatabase db, String Id, String Pass, String Phone, String birth) {
+        db.execSQL("UPDATE MEMBERDB " +
+                "SET PASS='" + Pass + "', PHONE='" + Phone + "', BIRTH='" + birth + "' WHERE ID='" + Id + "'");
+        db.close();
+
+    }
+
+    public void deleteMember(SQLiteDatabase db, String Id) {
+        db.execSQL("DELETE FROM MEMBERDB WHERE ID ='"+Id+"');
+    }
 }
