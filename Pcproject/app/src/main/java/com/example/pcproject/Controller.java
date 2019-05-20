@@ -99,6 +99,14 @@ public class Controller extends AppCompatActivity {
             ((MainActivity) mainAct).MyMember = mybean;
 
         }//내정보 수정처리
-
+        if(state.equals("addtime")){
+            dlg.addTimeDialog(activity);
+        }
+        if(state.equals("addtimefinal")){
+            mybean = ((myinfo)activity).memberbeen;
+            memberDAO.updateTime(db,mybean.getId(),mybean.getRetime());
+            Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
+            ((myinfo)activity).tvTime.setText(mybean.getRetime());
+        }
     }
 }

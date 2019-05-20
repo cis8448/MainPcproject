@@ -16,8 +16,9 @@ import android.widget.Toast;
 public class myinfo extends AppCompatActivity {
     Controller con;
     Button midUpdate, mTimeAdd, mSeatrese, midRemove;
-    TextView tvId, tvPw, tvName, tvHp, tvTime;
+    public TextView tvId, tvPw, tvName, tvHp, tvTime;
     String myinfoupdate = "myinfoupdate";
+    String addtime = "addtime";
     public Memberbeen memberbeen;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,10 @@ public class myinfo extends AppCompatActivity {
 
     public void OnclickUpdate(View v){
             con.sub(myinfo.this,myinfoupdate);
+        }
+
+        public void OnclickTimeadd(View v){
+            con.sub(myinfo.this,addtime);
         }
     }
 

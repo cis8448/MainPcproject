@@ -204,7 +204,8 @@
             android:textSize="20sp"
             android:id="@+id/mTimeAdd"
             android:background="@drawable/reseseat"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:onClick="OnclickTimeadd"/>
 
 
 
