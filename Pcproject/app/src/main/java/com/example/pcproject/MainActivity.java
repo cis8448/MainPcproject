@@ -11,16 +11,20 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
     public Memberbeen MyMember = new Memberbeen();
     Controller con;
     Button btn1;
 
     final String LOGIN = "login";
     final String MYINFO = "myinfo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         con = Controller.getInstance();
         con.setActivity(this);
         btn1 = findViewById(R.id.btn1);
