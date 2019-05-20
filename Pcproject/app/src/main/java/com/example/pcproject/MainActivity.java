@@ -37,11 +37,17 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         if(MyMember.getId() == null){
+
             menu.add(0,1,100,"로그인");
+
         }else{
+
             menu.add(0,1,100,"상품등록");
+
             menu.add(0,2,100,"좌석정보");
+
             menu.add(0,3,100,"내정보");
+
             menu.add(0,4,100,"로그아웃");
         }
     }
@@ -61,9 +67,12 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 if(item.getTitle().equals("내정보")) {
                     con.sub(MainActivity.this, MYINFO);
-                    break;
                 }
+                break;
             case 4:
+                Toast.makeText(this,  MyMember.getName()+"님 로그아웃 되셨습니다", Toast.LENGTH_SHORT).show();
+                MyMember = null;
+                MyMember = new Memberbeen();
                 break;
         }
         return super.onContextItemSelected(item);
