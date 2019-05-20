@@ -24,12 +24,14 @@ public class MemberDAO extends SQLiteOpenHelper {
                         "RETIME NVARCHAR(6)," +
                         "BIRTH NVARCHAR(6))"
                 );
+        //기본설정 건들지말것.
+//        db.execSQL("delete from MEMBERDB");
 //        db.execSQL("INSERT INTO MEMBERDB VALUES(" +
 //                "'cis8448'," +
 //                "'1234'," +
 //                "'최인수'," +
 //                "'01000000000'," +
-//                "null," +
+//                "'00:00'," +
 //                "'950103')"
 //        );
     }
@@ -65,5 +67,13 @@ public class MemberDAO extends SQLiteOpenHelper {
             }
         }
         return myMem;
+    }
+
+    public void updateUser(SQLiteDatabase db, String Id, String Pass, String Phone, String birth) {
+        db.execSQL("UPDATE MEMBERDB " +
+                "SET PASS='" + Pass + "', PHONE='" + Phone + "', BIRTH='" + birth + "' WHERE ID='" + Id + "'");
+        db.close();
+
+
     }
 }

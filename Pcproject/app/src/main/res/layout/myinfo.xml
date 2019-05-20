@@ -12,12 +12,52 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="내 정보"
+        android:layout_marginTop="25dp"
         android:gravity="center"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"/>
+        android:text="내 정보"
+        android:textSize="30dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="내정보 수정"
+            android:textSize="10sp"
+            android:id="@+id/midUpdate"
+            android:background="@drawable/usedseat"
+            android:layout_marginRight="5dp"
+            android:onClick="OnclickUpdate"/>
+
+            <Button
+                android:id="@+id/midRemove"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/usedseat"
+                android:text="회원 탈퇴"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -35,41 +75,46 @@
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:text="아이디     : "
-                android:textSize="30sp" />
+                android:textSize="20sp"
+                android:textColor="#000000"/>
 
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:text="비밀번호 : "
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:text="이름         : "
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:text="휴대폰     : "
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"/>
 
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:text="적립시간 :"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"/>
 
 
         </LinearLayout>
@@ -84,42 +129,48 @@
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/tvId"/>
+                android:id="@+id/tvId"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/tvPw"/>
+                android:id="@+id/tvPw"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/tvName"/>
+                android:id="@+id/tvName"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/tvHp"/>
+                android:singleLine="true"
+                android:id="@+id/tvHp"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="130dp"
                 android:layout_weight="1"
                 android:layout_height="0dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/tvTime"/>
+                android:id="@+id/tvTime"
+                android:textColor="#000000"/>
 
         </LinearLayout>
 
@@ -129,59 +180,29 @@
 
 
 
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="내정보 수정"
-            android:textSize="20sp"
-            android:id="@+id/midbtn"
-            android:background="@drawable/usedseat"
-            android:layout_marginRight="5dp"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시간 추가"
-            android:textSize="20sp"
-            android:id="@+id/mTimeAdd"
-            android:background="@drawable/usedseat"
-            android:layout_marginLeft="5dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="예약 확인"
-            android:textSize="20sp"
-            android:id="@+id/mSeatrese"
-            android:background="@drawable/usedseat"
-            android:layout_marginLeft="10dp"/>
-
-    </LinearLayout>
-    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="회원 탈퇴"
+            android:text="예약 확인"
             android:textSize="20sp"
-            android:id="@+id/mIdremove"
+            android:id="@+id/mSeatrese"
             android:background="@drawable/reseseat"
             android:layout_marginRight="5dp"/>
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="닫기"
+            android:text="시간 추가"
             android:textSize="20sp"
-            android:id="@+id/mclose"
+            android:id="@+id/mTimeAdd"
             android:background="@drawable/reseseat"
             android:layout_marginLeft="5dp"/>
 
