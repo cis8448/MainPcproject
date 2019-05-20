@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class Controller extends AppCompatActivity {
@@ -21,10 +23,10 @@ public class Controller extends AppCompatActivity {
     }
 
     public static Controller getInstance(){
-        if(controller == null){
-            controller = new Controller();
-        }
-        return controller;
+            if(controller == null){
+                controller = new Controller();
+            }
+            return controller;
     }
 
     public void setActivity(Activity act){
@@ -67,6 +69,20 @@ public class Controller extends AppCompatActivity {
          Intent signupOpen  = new Intent("com.example.pcproject.memberadd");
          activity.startActivity(signupOpen);
      }
-     
+
+     if(state.equals("signing")){
+         String id = ((memberadd)activity).joinid.getText().toString();
+         int se = memberDAO.seletoverlap(db,id);
+         if(se != 0){
+             Toast.makeText(activity, "아이디가 중복되었습니다.", Toast.LENGTH_SHORT).show();
+         }
+         else {
+             Memberbeen nemem = ((memberadd)activity).memberbeen;
+             memberDAO.insertMember(db,nemem);
+             activity.finish();
+             Toast.makeText(activity, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+             }
+         }
+
+     }
     }
-}

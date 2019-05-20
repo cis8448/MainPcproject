@@ -17,16 +17,17 @@ public class MemberDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS MEMBERDB(" +
-                        "ID NVARCHAR(15) PRIMARY KEY," +
-                        "PASS NVARCHAR(20)," +
-                        "NAME NVARCHAR(5)," +
-                        "PHONE NVARCHAR(12)," +
-                        "RETIME NVARCHAR(6)," +
-                        "BIRTH NVARCHAR(6))"
-                );
+                "ID NVARCHAR(15) PRIMARY KEY," +
+                "PASS NVARCHAR(20)," +
+                "NAME NVARCHAR(5)," +
+                "PHONE NVARCHAR(12)," +
+                "RETIME NVARCHAR(6)," +
+                "BIRTH NVARCHAR(6))"
+        );
 //        db.execSQL("INSERT INTO MEMBERDB VALUES(" +
 //                "'cis8448'," +
 //                "'1234'," +
+
 //                "'최인수'," +
 //                "'01000000000'," +
 //                "null," +
@@ -39,23 +40,25 @@ public class MemberDAO extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS MEMBERDB");
 
     }
-    public int selectLogin(SQLiteDatabase db,String id, String pw){
+
+    public int selectLogin(SQLiteDatabase db, String id, String pw) {
         onCreate(db);
         int selectset = -1;
-        cur = db.rawQuery("SELECT COUNT(*) FROM MEMBERDB WHERE ID ='" + id + "' AND PASS ='" + pw + "'",null);
-        if(cur.moveToNext()){
-            selectset = cur.getInt(0);
+        cur = db.rawQuery("SELECT COUNT(*)   FROM MEMBERDB WHERE ID ='" + id + "' AND PASS ='" + pw + "'", null);
+        if (cur.moveToNext()) {
+            selectset = cur.getInt(0); //0은 첫번째
         }
         return selectset;
     }
-    public Memberbeen selectID(SQLiteDatabase db,String id){
+
+    public Memberbeen selectID(SQLiteDatabase db, String id) {
         Memberbeen myMem = new Memberbeen();
-        cur = db.rawQuery("SELECT * FROM MEMBERDB WHERE ID ='" +id +"'",null);
-        if(cur.moveToNext()){
-            if(cur.getString(0).equals("admin")){
+        cur = db.rawQuery("SELECT * FROM MEMBERDB WHERE ID ='" + id + "'", null);
+        if (cur.moveToNext()) {
+            if (cur.getString(0).equals("admin")) {
                 myMem.setId(cur.getString(0));
                 return myMem;
-            }else{
+            } else {
                 myMem.setId(cur.getString(0));
                 myMem.setPass(cur.getString(1));
                 myMem.setName(cur.getString(2));
@@ -66,4 +69,22 @@ public class MemberDAO extends SQLiteOpenHelper {
         }
         return myMem;
     }
+
+    public int seletoverlap(SQLiteDatabase db, String id) {
+        onCreate(db);
+        int overlap = -1;
+        cur = db.rawQuery("SELECT COUNT(*) FROM MEMBERDB WHERE ID ='" + id + "'", null);
+        if (cur.moveToNext()) {
+            overlap = cur.getInt(0);
+        }
+        return overlap;
+    }
+
+    public void insertMember(SQLiteDatabase db, Memberbeen mem) {
+         db.execSQL("INSERT INTO MEMBERDB VALUES('"+mem.getId() +"','"+mem.getPass()+"','"+mem.getName()+"'," +
+                 "'"+mem.getPhone()+"','"+mem.getRetime()+"','"+mem.getBirth()+"')");
+         db.close();
+
+    }
+
 }

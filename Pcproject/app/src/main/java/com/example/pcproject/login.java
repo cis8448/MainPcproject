@@ -19,6 +19,7 @@ public class login extends AppCompatActivity {
     final String memberadd = "signup";
 
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -44,6 +45,10 @@ public class login extends AppCompatActivity {
     public void onclickmemberadd(View v){
         con.sub(login.this,memberadd);
     }
+
+
+
+
 
 
 }
