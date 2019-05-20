@@ -82,19 +82,6 @@ public class Dialogs {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (infopw.equals("")) {
-                    //EditText 가 공백일때
-                    infopw = mybeen.getPass();
-                }
-                if (infohp.equals("")) {
-                    infohp = mybeen.getPhone();
-                }
-                if (infobr.equals("")) {
-                    infobr = mybeen.getBirth();
-                }
-                //다 끝나고 con.sub 실행
-
-                con.sub(act, "myinfoupdating");
 
             }
         });
