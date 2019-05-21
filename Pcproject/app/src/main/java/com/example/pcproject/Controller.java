@@ -145,6 +145,18 @@ public class Controller extends AppCompatActivity {
             ((membermanagment)activity).adapterSet = listset.memberListSetting();
 
         }
+        if(state.equals("productlist")){
+            Intent productlistOpen = new Intent("com.example.pcproject.productlist");
+            activity.startActivity(productlistOpen);
+        }
+        if(state.equals("seatmanager")){
+            Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmenagement");
+            activity.startActivity(seatmanagerOpen);
+        }
+        if(state.equals("membermanagment")){
+            Intent membermanagmentOpen = new Intent("com.example.pcproject.membermanagment");
+            activity.startActivity(membermanagmentOpen);
+        }
     }
 }
 
