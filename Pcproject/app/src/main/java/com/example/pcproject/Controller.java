@@ -162,7 +162,7 @@ public class Controller extends AppCompatActivity {
             Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
         }
-        if (state.equals("")) {
+        if (state.equals("seatreserve")) {
             //내가 로그인 -> 적립시간의 유무에 따라 분기
             String retime = ((MainActivity) mainAct).MyMember.getRetime();
             if (retime.equals("0:00") || retime.equals("00:00")) {
