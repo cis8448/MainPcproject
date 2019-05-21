@@ -184,6 +184,11 @@ public class Controller extends AppCompatActivity {
         if(state.equals("memberinfoupdate")){
             dlg.memberUpdateDailog(activity);
         }
+
+
+
+
+
         if(state.equals("updateinfo")){
             memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
                     allmem.get(((membermanagment)mainAct).itemnum).getPass(),
