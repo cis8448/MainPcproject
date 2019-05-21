@@ -145,6 +145,7 @@ public class Controller extends AppCompatActivity {
             ((membermanagment)activity).adapterSet = listset.memberListSetting();
 
         }
+        
     }
 }
 
