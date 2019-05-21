@@ -19,6 +19,5 @@ public class seatdata extends AppCompatActivity {
     public void Onclickseat(View v){
         con.sub(seatdata.this,"seatreseve");
 
-
     }
 }
