@@ -43,6 +43,12 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".membermanagment">
+            <intent-filter>
+                <action android:name="com.example.pcproject.membermanagment"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
 
     </application>
