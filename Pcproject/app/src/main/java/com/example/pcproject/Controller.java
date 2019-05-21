@@ -120,10 +120,10 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("seatdata")) {
             Intent seatdataOpen = new Intent("com.example.pcproject.seatdata");
+            seatDAO.onCreate(db1);
             int[] ss = seatDAO.selectstate(db1);
             seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
-
 
         }//좌석화면 띄우기
         if (state.equals("addtime")) {
@@ -148,7 +148,6 @@ public class Controller extends AppCompatActivity {
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
 
         }
-
         if (state.equals("productlist")) {
             Intent productlistOpen = new Intent("com.example.pcproject.productlist");
             activity.startActivity(productlistOpen);

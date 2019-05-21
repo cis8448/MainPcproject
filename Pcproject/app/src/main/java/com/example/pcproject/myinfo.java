@@ -41,7 +41,7 @@ public class myinfo extends AppCompatActivity {
         con = Controller.getInstance();
 
         Intent intent = getIntent();
-        memberbeen = (Memberbeen) intent.getSerializableExtra("OBJECT");
+        memberbeen = (Memberbeen)intent.getSerializableExtra("OBJECT");
 
         tvId.setText(memberbeen.getId());
         tvPw.setText(memberbeen.getPass());

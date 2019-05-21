@@ -4,12 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class SeatDAO extends SQLiteOpenHelper {
     Cursor cur;
 
     public SeatDAO(Context context) {
         super(context, "Seat", null, 1);
+
     }
 
     public void onCreate(SQLiteDatabase db) {
@@ -22,19 +24,44 @@ public class SeatDAO extends SQLiteOpenHelper {
                 "UNMEM INTERGER(2))"
 
         );
+//        db.execSQL("DELETE FROM SEATDB");
+//        db.execSQL("INSERT INTO SEATDB VALUES(0,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(1,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(2,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(3,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(4,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(5,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(6,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(7,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(8,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(9,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(10,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(11,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(12,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(13,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(14,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(15,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(16,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(17,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(18,'0',NULL,0,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(19,'0',NULL,0,NULL,NULL)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS SEATDB");
 
+
     }
 
     public int[] selectstate(SQLiteDatabase db) {
         int[] seat = new int[20];
+        int i = 0;
+        db.execSQL("UPDATE SEATDB SET PCSTATE = '2' WHERE PCNAME = '0'");
         cur = db.rawQuery("SELECT PCSTATE FROM SEATDB", null);
-        for (int i = 0; cur.moveToNext(); i++) {
+        while (cur.moveToNext()){
             seat[i] = cur.getInt(0);
+            i++;
         }
         db.close();
         return seat;
