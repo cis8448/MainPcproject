@@ -13,9 +13,22 @@ import java.util.ArrayList;
 public class Listsetting {
 
     ArrayList<Memberbeen> allmember;
+    ArrayList<Probean> allproduct;
+    ArrayList<Seatbean> allSeat;
 
-    public Listsetting(ArrayList<Memberbeen> allmember){
-        this.allmember = allmember;
+    public Listsetting(Object amem, int category){
+        if(category == 1){
+            allmember = (ArrayList<Memberbeen>)amem;
+        }
+        else if(category == 2){
+            allproduct = (ArrayList<Probean>)amem;
+        }else if(category == 3){
+            allSeat = (ArrayList<Seatbean>)amem;
+        }
+
+    }
+    public Listsetting(ArrayList<Probean> allpro){
+        this.allproduct = allpro;
     }
 
     public MemberAdapterSet memberListSetting(){
