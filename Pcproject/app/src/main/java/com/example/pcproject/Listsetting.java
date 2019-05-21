@@ -30,14 +30,11 @@ public class Listsetting {
     public Listsetting(ArrayList<Probean> allpro){
         this.allproduct = allpro;
     }
-
     public MemberAdapterSet memberListSetting(){
         MemberAdapterSet memberAdapter = new MemberAdapterSet(allmember);
         return memberAdapter;
     }
-
-
- public class MemberAdapterSet extends BaseAdapter{
+    public class MemberAdapterSet extends BaseAdapter{
         ArrayList<Memberbeen> allmember;
         public MemberAdapterSet(ArrayList allmem){
             this.allmember = allmem;
