@@ -24,15 +24,15 @@ public class MemberDAO extends SQLiteOpenHelper {
                 "RETIME NVARCHAR(6)," +
                 "BIRTH NVARCHAR(6))"
         );
-        db.execSQL("delete from MEMBERDB");
-        db.execSQL("INSERT INTO MEMBERDB VALUES(" +
-                "'cis8448'," +
-                "'1234'," +
-                "'최인수'," +
-                "'01000000000'," +
-                "'00:00'," +
-                "'950103')"
-        );
+//        db.execSQL("delete from MEMBERDB");
+//        db.execSQL("INSERT INTO MEMBERDB VALUES(" +
+//                "'cis8448'," +
+//                "'1234'," +
+//                "'최인수'," +
+//                "'01000000000'," +
+//                "'00:00'," +
+//                "'950103')"
+//        );
     }
 
     @Override

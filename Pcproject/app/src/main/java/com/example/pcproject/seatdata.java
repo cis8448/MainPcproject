@@ -12,7 +12,10 @@ public class seatdata extends AppCompatActivity {
         con = Controller.getInstance();
 
     }
+
     public void Onclickseat(View v){
         con.sub(seatdata.this,"seatreve");
+
+
     }
 }
