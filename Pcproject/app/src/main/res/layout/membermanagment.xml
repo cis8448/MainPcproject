@@ -45,6 +45,8 @@
             android:layout_weight="1"
             android:text="추가"
             android:background="@drawable/usedseat"
+            android:onClick="onclickaddmem"
+            android:id="@+id/add"
             android:layout_marginRight="5dp"/>
 
         <Button
@@ -53,6 +55,8 @@
             android:layout_weight="1"
             android:text="삭제"
             android:background="@drawable/reseseat"
+            android:onClick="onclickaddmem"
+            android:id="@+id/del"
             android:layout_marginLeft="5dp"/>
     </LinearLayout>
 

@@ -22,13 +22,11 @@ public class MainActivity extends AppCompatActivity {
     final String LOGIN = "login";
     final String MYINFO = "myinfo";
     final String SEATDATA = "seatdata";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
         con = Controller.getInstance();
         con.setActivity(this);
         btn1 = findViewById(R.id.btn1);

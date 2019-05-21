@@ -25,6 +25,7 @@ public class Controller extends AppCompatActivity {
     Dialogs dlg = new Dialogs();
     static Controller controller;
     Listsetting listset;
+    ArrayList<Memberbeen> allmem;
 
 
     private Controller() {
@@ -85,13 +86,19 @@ public class Controller extends AppCompatActivity {
         if (state.equals("signing")) {
             String id = ((memberadd) activity).joinid.getText().toString();
             int se = memberDAO.seletoverlap(db, id);
+            Memberbeen nemem = null;
             if (se != 0) {
                 Toast.makeText(activity, "아이디가 중복되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                Memberbeen nemem = ((memberadd) activity).memberbeen;
+                nemem = ((memberadd) activity).memberbeen;
                 memberDAO.insertMember(db, nemem);
                 activity.finish();
                 Toast.makeText(activity, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+            if(mainAct instanceof membermanagment){
+                allmem.add(nemem);
+                ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
+
             }
         }//회원가입처리
         if (state.equals("myinfoupdate")) {
@@ -120,10 +127,10 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("seatdata")) {
             Intent seatdataOpen = new Intent("com.example.pcproject.seatdata");
+            seatDAO.onCreate(db1);
             int[] ss = seatDAO.selectstate(db1);
             seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
-
 
         }//좌석화면 띄우기
         if (state.equals("addtime")) {
@@ -143,12 +150,10 @@ public class Controller extends AppCompatActivity {
 
         }
         if (state.equals("listset")) {
-            ArrayList<Memberbeen> allmem = memberDAO.selectAll(db);
-            listset = new Listsetting(allmem);
+            allmem = memberDAO.selectAll(db);
+            listset = new Listsetting(allmem , 1);
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
-
         }
-
         if (state.equals("productlist")) {
             Intent productlistOpen = new Intent("com.example.pcproject.productmanagment");
             activity.startActivity(productlistOpen);
@@ -169,6 +174,13 @@ public class Controller extends AppCompatActivity {
 //                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
             }
 
+        }
+        if (state.equals("userdel")){
+            Memberbeen mem = new Memberbeen();
+            mem = allmem.get(((membermanagment)mainAct).itemnum);
+            memberDAO.deleteMember(db,mem.getId());
+            allmem.remove(((membermanagment)mainAct).itemnum);
+            ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
     }
 
