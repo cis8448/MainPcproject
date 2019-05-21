@@ -93,7 +93,7 @@ public class Dialogs {
     public void reserveDialog(final Activity act) {
         con = Controller.getInstance();
         ReserveView = View.inflate(act, R.layout.seatreserve, null);
-        mybeen = ((myinfo) act).memberbeen;
+        mybeen = ((myinfo)act).memberbeen;
         AlertDialog.Builder reserveDlg = new AlertDialog.Builder(act);
         reserveDlg.setView(ReserveView);
 

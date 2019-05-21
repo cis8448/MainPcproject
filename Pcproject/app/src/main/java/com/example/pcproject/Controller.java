@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Controller extends AppCompatActivity {
     MemberDAO memberDAO;
     SQLiteDatabase db;
@@ -21,6 +23,10 @@ public class Controller extends AppCompatActivity {
     Activity mainAct;
     Dialogs dlg = new Dialogs();
     static Controller controller;
+    Listsetting listset;
+
+
+
 
     private Controller(){
 
@@ -59,6 +65,7 @@ public class Controller extends AppCompatActivity {
                 mybean = memberDAO.selectID(db,intentid);
                 if(mybean.getId().equals("admin")){
                    sub(activity,"adminLogin");
+
                 }else{
                     sub(activity,"ClearLogin");
                 }
@@ -111,11 +118,11 @@ public class Controller extends AppCompatActivity {
             activity.finish();
             Toast.makeText(activity, "회원 탈퇴 되었습니다잉", Toast.LENGTH_SHORT).show();
         }
-        if(state.equals("seatreve")){
+        if(state.equals("seatdata")){
             Intent seatdataOpen  = new Intent("com.example.pcproject.seatdata");
             activity.startActivity(seatdataOpen);
 
-        }
+        }//좌석화면 띄우기
         if(state.equals("addtime")){
             dlg.addTimeDialog(activity);
         }
@@ -124,6 +131,19 @@ public class Controller extends AppCompatActivity {
             memberDAO.updateTime(db,mybean.getId(),mybean.getRetime());
             Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
             ((myinfo)activity).tvTime.setText(mybean.getRetime());
+        }
+        if(state.equals("adminLogin")){
+            Intent membermanagmentOpen = new Intent("com.example.pcproject.membermanagment");
+            activity.finish();
+            mainAct.finish();
+            activity.startActivity(membermanagmentOpen);
+
+        }
+        if(state.equals("listset")){
+            ArrayList<Memberbeen> allmem = memberDAO.selectAll(db);
+            listset = new Listsetting(allmem);
+            ((membermanagment)activity).adapterSet = listset.memberListSetting();
+
         }
     }
 }
