@@ -60,8 +60,10 @@ public class Listsetting {
          birthtxt = convertView.findViewById(R.id.mDb);
          idtxt = convertView.findViewById(R.id.mId);
          timetxt = convertView.findViewById(R.id.mTime);
-         for(int i = 0 ; i < allmember.size();)
-         return convertView;
+         for(int i = 0 ; i < allmember.size();){
+
+         }
+             return convertView;
      }
  }
 }

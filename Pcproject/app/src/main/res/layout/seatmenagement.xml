@@ -5,14 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="좌석 관리"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:background="#FFEB3B"/>
+        android:orientation="horizontal"
+        android:background="#FFEB3B">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴"
+            android:onClick="Onclickadmin"
+            android:id="@+id/btnadMenu"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="좌석 관리"
+            android:textSize="30sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+
+
 
     <ListView
         android:layout_width="match_parent"
