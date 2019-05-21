@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,9 @@ public class Dialogs {
     Object abj;
     int infotimeIt;
     String infotimeSt2;
-
+    int timehour;
+    int timeminute;
+    SQLiteDatabase db;
 
 
     String Time[] = {
@@ -76,7 +80,6 @@ public class Dialogs {
         UpdateDlg.show();
 
     }
-
     public void removeDialog(final Activity act){
         con = Controller.getInstance();
         AlertDialog.Builder removeDlg = new AlertDialog.Builder(act);
@@ -92,22 +95,40 @@ public class Dialogs {
     }
     public void reserveDialog(final Activity act) {
         con = Controller.getInstance();
+
         ReserveView = View.inflate(act, R.layout.seatreserve, null);
-        mybeen = ((myinfo)act).memberbeen;
         AlertDialog.Builder reserveDlg = new AlertDialog.Builder(act);
         reserveDlg.setView(ReserveView);
+        final TimePicker timePicker= ReserveView.findViewById(R.id.timepicker);
+        TextView time = ReserveView.findViewById(R.id.mytime);
+        time.setText(con.mybean.getRetime());
+        TextView name = ReserveView.findViewById(R.id.myname);
+        name.setText(con.mybean.getName());
+        TextView seatnum = ReserveView.findViewById(R.id.seatnumber);
+        seatnum.setText(((seatdata)act).item + "");
+
+
+
+
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                timehour = timePicker.getHour();
+                timeminute = timePicker.getMinute();
+
+            }
+        });
 
         reserveDlg.setNegativeButton("취소", null);
         reserveDlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                con.sub(act,"Finalreve");
 
             }
         });
         reserveDlg.show();
     }
-
     public void addTimeDialog(final Activity act){
         con = Controller.getInstance();
         mybeen = ((myinfo)act).memberbeen;
@@ -170,6 +191,49 @@ public class Dialogs {
 
         AddTimeDlg.show();
     }
+    public void memberUpdateDailog(final Activity act){
+        con = Controller.getInstance();
+        UpdateView = View.inflate(act, R.layout.myinfoupdate, null);
 
+        AlertDialog.Builder UpdateDlg = new AlertDialog.Builder(act);
+        UpdateDlg.setView(UpdateView);
+        UpPass = UpdateView.findViewById(R.id.UpPass);
+        UpPhone = UpdateView.findViewById(R.id.UpPhone);
+        UpBirth = UpdateView.findViewById(R.id.UpBirth);
+
+        UpdateDlg.setNegativeButton("취소", null);
+        UpdateDlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                infopw = UpPass.getText().toString();
+                infohp = UpPhone.getText().toString();
+                infobr = UpBirth.getText().toString();
+                if(infopw.equals("")) {
+                    //EditText 가 공백일때
+                    infopw = con.allmem.get(((membermanagment)act).itemnum).getPass();
+                }
+                if(infohp.equals("")){
+                    infohp = con.allmem.get(((membermanagment)act).itemnum).getPhone();
+                }
+                if(infobr.equals("")){
+                    infobr = con.allmem.get(((membermanagment)act).itemnum).getBirth();
+                }
+                con.allmem.get(((membermanagment)act).itemnum).setPass(UpPass.getText().toString());
+                con.allmem.get(((membermanagment)act).itemnum).setPhone(UpPhone.getText().toString());
+                con.allmem.get(((membermanagment)act).itemnum).setBirth(UpBirth.getText().toString());
+                //다 끝나고 con.sub 실행
+                con.sub(act, "updateinfo");
+
+            }
+        });
+
+
+
+
+
+        
+        UpdateDlg.show();
+    }
 
 }

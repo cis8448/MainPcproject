@@ -13,9 +13,8 @@ import java.util.ArrayList;
 
 public class Controller extends AppCompatActivity {
     MemberDAO memberDAO;
-    ProductDAO productDAO;
     SeatDAO seatDAO;
-    SQLiteDatabase db, db1, db2;
+    SQLiteDatabase db, db1;
     public String intentid;
     public String intentpw;
     public String UpdateItPw;
@@ -27,7 +26,6 @@ public class Controller extends AppCompatActivity {
     static Controller controller;
     Listsetting listset;
     ArrayList<Memberbeen> allmem;
-    ArrayList<Probean> allpro;
 
 
     private Controller() {
@@ -149,14 +147,12 @@ public class Controller extends AppCompatActivity {
             activity.finish();
             mainAct.finish();
             activity.startActivity(membermanagmentOpen);
+
         }
         if (state.equals("listset")) {
             allmem = memberDAO.selectAll(db);
-            allpro = productDAO.selectAll(db2);
             listset = new Listsetting(allmem , 1);
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
-
-
         }
         if (state.equals("productlist")) {
             Intent productlistOpen = new Intent("com.example.pcproject.productmanagment");
@@ -166,7 +162,7 @@ public class Controller extends AppCompatActivity {
             Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
         }
-        if (state.equals("")) {
+        if (state.equals("seatreve")) {
             //내가 로그인 -> 적립시간의 유무에 따라 분기
             String retime = ((MainActivity) mainAct).MyMember.getRetime();
             if (retime.equals("0:00") || retime.equals("00:00")) {
@@ -179,6 +175,11 @@ public class Controller extends AppCompatActivity {
             }
 
         }
+        if (state.equals("Finalreve")){
+            seatDAO.updatestate(db1,((seatdata)activity).item,"1");
+            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn2.getBackground());
+            ((seatdata)activity).seat[((seatdata)activity).item] = 1;
+        }
         if (state.equals("userdel")){
             Memberbeen mem = new Memberbeen();
             mem = allmem.get(((membermanagment)mainAct).itemnum);
@@ -186,11 +187,17 @@ public class Controller extends AppCompatActivity {
             allmem.remove(((membermanagment)mainAct).itemnum);
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
-        if (state.equals("adminproadd")){
-            Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
+        if(state.equals("memberinfoupdate")){
+            dlg.memberUpdateDailog(activity);
+        }
+        if(state.equals("updateinfo")){
+            memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getPass(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getPhone(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getBirth());
+            ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
     }
-
 
 
 }

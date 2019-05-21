@@ -24,7 +24,7 @@ public class membermanagment  extends AppCompatActivity {
     Controller con = Controller.getInstance();
     final String LISTSET = "listset";
     Button btnadMenu,bgtnadd,btndel;
-    public int itemnum;
+    public int itemnum = -1;
 
     final String PRODUCTMANA = "productlist";
     final String SEATMANA = "seatmanager";
@@ -48,10 +48,26 @@ public class membermanagment  extends AppCompatActivity {
         list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                itemnum = position;
-                LinearLayout ll = view.findViewById(R.id.hh);
-                ll.setBackgroundColor(Color.GRAY);
 
+
+                LinearLayout ll = view.findViewById(R.id.hh);
+                switch (itemnum) {
+                    case -1:
+                        ll.setBackgroundColor(Color.GRAY);
+                        itemnum = position;
+                        break;
+                    default:
+                        ll.setBackgroundColor(Color.WHITE);
+                        itemnum = -1;
+                }
+            }
+        });
+        list1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                itemnum = position;
+                con.sub(membermanagment.this,"memberinfoupdate");
+                return true;
             }
         });
 
@@ -87,7 +103,9 @@ public class membermanagment  extends AppCompatActivity {
                 con.sub(this,MEMADD);
                 break;
             case R.id.del:
-                con.sub(this,MEMDEL);
+                if(itemnum != -1 ) {
+                    con.sub(this, MEMDEL);
+                }
                 break;
         }
     }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class SeatDAO extends SQLiteOpenHelper {
     Cursor cur;
@@ -57,7 +56,6 @@ public class SeatDAO extends SQLiteOpenHelper {
     public int[] selectstate(SQLiteDatabase db) {
         int[] seat = new int[20];
         int i = 0;
-        db.execSQL("UPDATE SEATDB SET PCSTATE = '2' WHERE PCNAME = '0'");
         cur = db.rawQuery("SELECT PCSTATE FROM SEATDB", null);
         while (cur.moveToNext()){
             seat[i] = cur.getInt(0);
@@ -67,9 +65,10 @@ public class SeatDAO extends SQLiteOpenHelper {
         return seat;
 
     }
-    public void updatestate(SQLiteDatabase db, String Pcname, String Pcstate){
+    public void updatestate(SQLiteDatabase db, int Pcname, String Pcstate){
         db.execSQL("UPDATE SEATDB " + "SET PCSTATE = '"+ Pcstate +"' WHERE PCNAME = '"+Pcname+"'");
         db.close();
     }
+
 
 }
