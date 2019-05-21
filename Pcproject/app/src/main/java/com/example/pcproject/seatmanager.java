@@ -12,6 +12,7 @@ public class seatmanager extends AppCompatActivity {
     Controller con;
     Button btnadMenu;
 
+
     final String MEMBERMANA = "adminLogin";
     final String PRODUCTMANA = "productlist";
 
@@ -19,10 +20,16 @@ public class seatmanager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seatmenagement);
         con = Controller.getInstance();
+
+
+
+
+
         //컨텍스트 메뉴 추가
         btnadMenu = findViewById(R.id.btnadMenu);
         registerForContextMenu(btnadMenu);
         btnadMenu.setLongClickable(true);
+
 
     }
 
