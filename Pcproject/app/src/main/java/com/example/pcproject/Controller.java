@@ -126,5 +126,5 @@ public class Controller extends AppCompatActivity {
             ((myinfo)activity).tvTime.setText(mybean.getRetime());
         }
     }
-    }
+}
 
