@@ -145,6 +145,16 @@ public class Controller extends AppCompatActivity {
             ((membermanagment)activity).adapterSet = listset.memberListSetting();
 
         }
+        if(state.equals("userTime")){
+            
+            String retime = ((MainActivity)mainAct).MyMember.getRetime();
+            if(retime.equals("0:00") || retime.equals("00:00")){
+                Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
 
