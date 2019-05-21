@@ -162,7 +162,7 @@ public class Controller extends AppCompatActivity {
             Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
         }
-        if (state.equals("seatreserve")) {
+        if (state.equals("seatreve")) {
             //내가 로그인 -> 적립시간의 유무에 따라 분기
             String retime = ((MainActivity) mainAct).MyMember.getRetime();
             if (retime.equals("0:00") || retime.equals("00:00")) {
@@ -170,7 +170,8 @@ public class Controller extends AppCompatActivity {
                 Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
             } else {
                 // 내가 적립시간 O
-                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
+                dlg.reserveDialog(activity);
+//                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -181,15 +182,10 @@ public class Controller extends AppCompatActivity {
             allmem.remove(((membermanagment)mainAct).itemnum);
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
-        if(state.equals("memberinfoupdate")){
-            dlg.memberUpdateDailog(activity);
-        }
-        if(state.equals("updateinfo")){
-            memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
-                    allmem.get(((membermanagment)mainAct).itemnum).getPass(),
-                    allmem.get(((membermanagment)mainAct).itemnum).getPhone(),
-                    allmem.get(((membermanagment)mainAct).itemnum).getBirth());
-            ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
+        if (state.equals("Finalreve")){
+            seatDAO.updatestate(db1,((seatdata)activity).item,"1");
+            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn2.getBackground());
+            ((seatdata)activity).seat[((seatdata)activity).item] = 1;
         }
     }
 

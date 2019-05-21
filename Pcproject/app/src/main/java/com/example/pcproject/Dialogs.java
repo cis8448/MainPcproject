@@ -129,7 +129,6 @@ public class Dialogs {
         });
         reserveDlg.show();
     }
-
     public void addTimeDialog(final Activity act){
         con = Controller.getInstance();
         mybeen = ((myinfo)act).memberbeen;
