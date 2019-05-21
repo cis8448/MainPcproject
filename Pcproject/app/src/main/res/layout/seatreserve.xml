@@ -13,15 +13,35 @@
         android:layout_height="wrap_content"
         android:text="한조 PC방 좌석 예약"
         android:gravity="center"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:layout_marginBottom="30dp"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="한조 님 환영합니다. 보유시간 : 07:00"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="한조"
+            android:gravity="center"
+            android:id="@+id/myname"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="님 환영합니다. 보유시간 :"
+            android:gravity="center|left"/>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+
+            android:id="@+id/mytime"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,13 +53,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="좌석 번호 :"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:layout_weight="2"
+            android:gravity="center" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="    37번"
-            android:layout_weight="1"/>
+            android:text="1번"
+            android:layout_weight="1"
+            android:id="@+id/seatnumber"/>
 
     </LinearLayout>
 
@@ -53,7 +74,8 @@
     <TimePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:timePickerMode="spinner">
+        android:timePickerMode="spinner"
+        android:id="@+id/timepicker">
     </TimePicker>
 
 
