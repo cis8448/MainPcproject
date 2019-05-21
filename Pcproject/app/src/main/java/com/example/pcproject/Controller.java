@@ -150,27 +150,22 @@ public class Controller extends AppCompatActivity {
         }
 
         if (state.equals("productlist")) {
-            Intent productlistOpen = new Intent("com.example.pcproject.productlist");
+            Intent productlistOpen = new Intent("com.example.pcproject.productmanagment");
             activity.startActivity(productlistOpen);
         }
         if (state.equals("seatmanager")) {
-            Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmenagement");
+            Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
         }
-        if (state.equals("membermanagment")) {
-            Intent membermanagmentOpen = new Intent("com.example.pcproject.membermanagment");
-            activity.startActivity(membermanagmentOpen);
+        if (state.equals("userTime")) {
 
-            if (state.equals("userTime")) {
-
-                String retime = ((MainActivity) mainAct).MyMember.getRetime();
-                if (retime.equals("0:00") || retime.equals("00:00")) {
-                    Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
-                }
-
+            String retime = ((MainActivity) mainAct).MyMember.getRetime();
+            if (retime.equals("0:00") || retime.equals("00:00")) {
+                Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 }

@@ -59,5 +59,9 @@ public class membermanagment  extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    public void Onclickadmin(View v){
+        this.openContextMenu(btnadMenu);
+    }
+
 
 }
