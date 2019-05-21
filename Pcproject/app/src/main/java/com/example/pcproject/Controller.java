@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 public class Controller extends AppCompatActivity {
     MemberDAO memberDAO;
-    SQLiteDatabase db;
+    SeatDAO seatDAO;
+    SQLiteDatabase db,db1;
     public String intentid;
     public String intentpw;
     public String UpdateItPw;
@@ -45,7 +46,9 @@ public class Controller extends AppCompatActivity {
 
     public void sub(Activity activity ,String state){
         memberDAO = new MemberDAO(activity);
+        seatDAO = new SeatDAO(activity);
         db = memberDAO.getWritableDatabase();
+        db1 = seatDAO.getWritableDatabase();
         if(state.equals("login")){
          Intent loginOpen  = new Intent("com.example.pcproject.login");
          activity.startActivity(loginOpen);
@@ -120,7 +123,12 @@ public class Controller extends AppCompatActivity {
         }
         if(state.equals("seatdata")){
             Intent seatdataOpen  = new Intent("com.example.pcproject.seatdata");
+            int[] ss = seatDAO.selectstate(db1);
+            seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
+
+
+
 
         }//좌석화면 띄우기
         if(state.equals("addtime")){
