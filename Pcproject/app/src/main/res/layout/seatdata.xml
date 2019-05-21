@@ -39,27 +39,32 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt1"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt2"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt3"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt4"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/reseseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt5"/>
     </LinearLayout>
 
     <!--
@@ -75,27 +80,32 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt6"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/reseseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt7"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/reseseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt8"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt9"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt10"/>
     </LinearLayout>
 
     <!--
@@ -104,7 +114,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="75dp"
         android:orientation="horizontal"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp">
@@ -117,15 +127,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="빈 좌석"
+                android:text="   빈 좌석"
                 android:textColor="#000000"/>
             <Button
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/blankseat"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:id="@+id/blankseat"/>
 
 
         </LinearLayout>
@@ -138,15 +149,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="예약 중"
+                android:text="   예약 중"
                 android:textColor="#ED1C24"/>
             <Button
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/reseseat"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:id="@+id/reseseat"/>
 
 
         </LinearLayout>
@@ -159,15 +171,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사용 중"
+                android:text="   사용 중"
                 android:textColor="#00ADEF"/>
             <Button
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/usedseat"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:id="@+id/usedseat"/>
 
 
         </LinearLayout>
@@ -190,27 +203,32 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt11"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt12"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/blankseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt13"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/reseseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt14"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/reseseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt15"/>
     </LinearLayout>
 
     <!--
@@ -225,27 +243,32 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt16"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt17"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt18"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt19"/>
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclickseat"/>
+            android:onClick="Onclickseat"
+            android:id="@+id/bt20"/>
     </LinearLayout>
 
 

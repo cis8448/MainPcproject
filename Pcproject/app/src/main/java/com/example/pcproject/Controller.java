@@ -127,10 +127,10 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("seatdata")) {
             Intent seatdataOpen = new Intent("com.example.pcproject.seatdata");
+            seatDAO.onCreate(db1);
             int[] ss = seatDAO.selectstate(db1);
             seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
-
 
         }//좌석화면 띄우기
         if (state.equals("addtime")) {
@@ -162,13 +162,16 @@ public class Controller extends AppCompatActivity {
             Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
         }
-        if (state.equals("userTime")) {
-
+        if (state.equals("")) {
+            //내가 로그인 -> 적립시간의 유무에 따라 분기
             String retime = ((MainActivity) mainAct).MyMember.getRetime();
             if (retime.equals("0:00") || retime.equals("00:00")) {
+                // 내가 적립시간 X
                 Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
+                // 내가 적립시간 O
+                dlg.reserveDialog(activity);
+//                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -180,5 +183,7 @@ public class Controller extends AppCompatActivity {
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
     }
+
+
 }
 

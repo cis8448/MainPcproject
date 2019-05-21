@@ -47,4 +47,7 @@ public class productmanagment extends AppCompatActivity {
     public void Onclickadmin(View v) {
             this.openContextMenu(btnadMenu);
     }
+
+
+
 }
