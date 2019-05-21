@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class seatdata extends AppCompatActivity {
+
     Controller con;
+    Memberbeen mybeen;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +17,11 @@ public class seatdata extends AppCompatActivity {
     }
     public void Onclickseat(View v){
         con.sub(seatdata.this,"seatreve");
+
+        if(mybeen.getRetime().equals()){
+
+        }
+
     }
 
 }
