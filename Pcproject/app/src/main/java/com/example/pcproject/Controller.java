@@ -170,8 +170,7 @@ public class Controller extends AppCompatActivity {
                 Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
             } else {
                 // 내가 적립시간 O
-                dlg.reserveDialog(activity);
-//                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -180,6 +179,16 @@ public class Controller extends AppCompatActivity {
             mem = allmem.get(((membermanagment)mainAct).itemnum);
             memberDAO.deleteMember(db,mem.getId());
             allmem.remove(((membermanagment)mainAct).itemnum);
+            ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
+        }
+        if(state.equals("memberinfoupdate")){
+            dlg.memberUpdateDailog(activity);
+        }
+        if(state.equals("updateinfo")){
+            memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getPass(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getPhone(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getBirth());
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
     }
