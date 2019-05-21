@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class membermanagment  extends AppCompatActivity {
+
     public ListView list1;
     public Listsetting.MemberAdapterSet adapterSet;
     Controller con = Controller.getInstance();
@@ -84,7 +85,6 @@ public class membermanagment  extends AppCompatActivity {
         switch (v.getId()){
             case R.id.add:
                 con.sub(this,MEMADD);
-                this.onStop();
                 break;
             case R.id.del:
                 con.sub(this,MEMDEL);

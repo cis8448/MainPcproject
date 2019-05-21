@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Mount Text"
-            android:id="@+id/orderTvMount"
+            android:id="@+id/orderTvPrice"
             android:layout_weight="0"
             android:textSize="15dp"/>
 

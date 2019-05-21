@@ -3,9 +3,6 @@ package com.example.pcproject;
 public class Probean {
 
     String proID; //상품 ID PK
-    String proOrder; //상품 주문
-    String proCheck; //상품 주문 내역 (했던것들 보기)
-    String proPay; //상품의 결제
     String proName; //상품의 이름
     String proPrice; //상품의 가격
     String proAmount; //상품의 수량
@@ -18,30 +15,6 @@ public class Probean {
 
     public void setProID(String proID) {
         this.proID = proID;
-    }
-
-    public String getProOrder() {
-        return proOrder;
-    }
-
-    public void setProOrder(String proOrder) {
-        this.proOrder = proOrder;
-    }
-
-    public String getProCheck() {
-        return proCheck;
-    }
-
-    public void setProCheck(String proCheck) {
-        this.proCheck = proCheck;
-    }
-
-    public String getProPay() {
-        return proPay;
-    }
-
-    public void setProPay(String proPay) {
-        this.proPay = proPay;
     }
 
     public String getProName() {

@@ -44,14 +44,18 @@
             android:layout_height="wrap_content"
             android:text="상품 추가"
             android:layout_weight="1"
-            android:background="@drawable/usedseat"/>
+            android:background="@drawable/usedseat"
+            android:id="@+id/productAdd"
+            android:onClick="onClickProbtn"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="상품 삭제"
             android:layout_weight="1"
-            android:background="@drawable/reseseat"/>
+            android:background="@drawable/reseseat"
+            android:id="@+id/productDel"
+            android:onClick="onClickProbtn"/>
 
 
 

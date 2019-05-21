@@ -13,8 +13,9 @@ import java.util.ArrayList;
 
 public class Controller extends AppCompatActivity {
     MemberDAO memberDAO;
+    ProductDAO productDAO;
     SeatDAO seatDAO;
-    SQLiteDatabase db, db1;
+    SQLiteDatabase db, db1, db2;
     public String intentid;
     public String intentpw;
     public String UpdateItPw;
@@ -26,6 +27,7 @@ public class Controller extends AppCompatActivity {
     static Controller controller;
     Listsetting listset;
     ArrayList<Memberbeen> allmem;
+    ArrayList<Probean> allpro;
 
 
     private Controller() {
@@ -147,12 +149,14 @@ public class Controller extends AppCompatActivity {
             activity.finish();
             mainAct.finish();
             activity.startActivity(membermanagmentOpen);
-
         }
         if (state.equals("listset")) {
             allmem = memberDAO.selectAll(db);
+            allpro = productDAO.selectAll(db2);
             listset = new Listsetting(allmem , 1);
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
+
+
         }
         if (state.equals("productlist")) {
             Intent productlistOpen = new Intent("com.example.pcproject.productmanagment");
@@ -182,7 +186,11 @@ public class Controller extends AppCompatActivity {
             allmem.remove(((membermanagment)mainAct).itemnum);
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
+        if (state.equals("adminproadd")){
+            Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
+        }
     }
+
 
 
 }

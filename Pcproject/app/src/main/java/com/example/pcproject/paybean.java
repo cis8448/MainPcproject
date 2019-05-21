@@ -9,6 +9,11 @@ public class paybean {
     String ProName; // 상품 이름
     String Proprice;// 상품 가격
     int imgid; // 상품이미지 경로
+
+//    String proOrder; //상품 주문
+//    String proCheck; //상품 주문 내역 (했던것들 보기)
+//    String proPay; //상품의 결제
+    //pay 에 있어야 할것들이 pro에 있었음
     public int getImgid() {
         return imgid;
     }

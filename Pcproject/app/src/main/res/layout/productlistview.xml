@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:id="@+id/proll">
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Mount Text"
-            android:id="@+id/proTvMount"
+            android:id="@+id/proTvPrice"
             android:layout_weight="0"
             android:textSize="15dp"/>
 
