@@ -67,4 +67,9 @@ public class SeatDAO extends SQLiteOpenHelper {
         return seat;
 
     }
+    public void updatestate(SQLiteDatabase db, String Pcname, String Pcstate){
+        db.execSQL("UPDATE SEATDB " + "SET PCSTATE = '"+ Pcstate +"' WHERE PCNAME = '"+Pcname+"'");
+        db.close();
+    }
+
 }

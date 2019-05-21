@@ -49,6 +49,18 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".productmanagment">
+            <intent-filter>
+                <action android:name="com.example.pcproject.productmanagment"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name=".seatmanager">
+            <intent-filter>
+                <action android:name="com.example.pcproject.seatmanager"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
 
     </application>

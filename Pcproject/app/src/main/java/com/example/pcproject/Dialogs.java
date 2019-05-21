@@ -161,13 +161,15 @@ public class Dialogs {
 
                 int result = timeResult + infotimeIt;
 
-
                 String stresult = result + ":" + infotimeSt2;
                 mybeen.setRetime(stresult);
                 con.sub(act,"addtimefinal");
+
             }
         });
 
         AddTimeDlg.show();
     }
+
+
 }

@@ -12,7 +12,7 @@ public class seatmanager extends AppCompatActivity {
     Controller con;
     Button btnadMenu;
 
-    final String MEMBERMANA = "membermanagment";
+    final String MEMBERMANA = "adminLogin";
     final String PRODUCTMANA = "productlist";
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +44,9 @@ public class seatmanager extends AppCompatActivity {
                 break;
         }
         return super.onContextItemSelected(item);
+    }
+
+    public void Onclickadmin(View v) {
+        this.openContextMenu(btnadMenu);
     }
 }
