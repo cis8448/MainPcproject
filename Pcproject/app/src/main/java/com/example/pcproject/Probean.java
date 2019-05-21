@@ -6,7 +6,6 @@ public class Probean {
     String proOrder; //상품 주문
     String proCheck; //상품 주문 내역 (했던것들 보기)
     String proPay; //상품의 결제
-
     String proName; //상품의 이름
     String proPrice; //상품의 가격
     String proAmount; //상품의 수량
