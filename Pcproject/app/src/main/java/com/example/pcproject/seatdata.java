@@ -6,6 +6,7 @@ import android.view.View;
 
 public class seatdata extends AppCompatActivity {
     Controller con;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seatdata);
@@ -15,4 +16,5 @@ public class seatdata extends AppCompatActivity {
     public void Onclickseat(View v){
         con.sub(seatdata.this,"seatreve");
     }
+
 }
