@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Controller extends AppCompatActivity {
     MemberDAO memberDAO;
     SQLiteDatabase db;
@@ -21,6 +23,7 @@ public class Controller extends AppCompatActivity {
     Activity mainAct;
     Dialogs dlg = new Dialogs();
     static Controller controller;
+    Listsetting listset;
 
 
 
@@ -129,12 +132,18 @@ public class Controller extends AppCompatActivity {
             Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
             ((myinfo)activity).tvTime.setText(mybean.getRetime());
         }
-
         if(state.equals("adminLogin")){
             Intent membermanagmentOpen = new Intent("com.example.pcproject.membermanagment");
-            activity.startActivity(membermanagmentOpen);
             activity.finish();
             mainAct.finish();
+            activity.startActivity(membermanagmentOpen);
+
+        }
+        if(state.equals("listset")){
+            ArrayList<Memberbeen> allmem = memberDAO.selectAll(db);
+            listset = new Listsetting(allmem);
+            ((membermanagment)activity).adapterSet = listset.memberListSetting();
+
         }
     }
 }

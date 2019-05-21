@@ -12,16 +12,14 @@ import java.util.ArrayList;
 
 public class Listsetting {
 
-    ArrayList<unmemberbean> allmember;
+    ArrayList<Memberbeen> allmember;
 
-    public Listsetting(ArrayList<unmemberbean> allmember){
+    public Listsetting(ArrayList<Memberbeen> allmember){
         this.allmember = allmember;
     }
 
-    public Adapter memberListSetting(){
-        Adapter memberAdapter = null;
-
-
+    public MemberAdapterSet memberListSetting(){
+        MemberAdapterSet memberAdapter = new MemberAdapterSet(allmember);
         return memberAdapter;
     }
 
@@ -60,7 +58,11 @@ public class Listsetting {
          birthtxt = convertView.findViewById(R.id.mDb);
          idtxt = convertView.findViewById(R.id.mId);
          timetxt = convertView.findViewById(R.id.mTime);
-         for(int i = 0 ; i < allmember.size();)
+             Memberbeen mem = allmember.get(position);
+             nametxt.setText(mem.getName());
+             birthtxt.setText(mem.getBirth());
+             idtxt.setText(mem.getId());
+             timetxt.setText(mem.getRetime());
          return convertView;
      }
  }
