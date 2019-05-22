@@ -24,27 +24,27 @@ public class SeatDAO extends SQLiteOpenHelper {
                 "UNMEM INTERGER(2),"+
                 "PCREVETIME NVARCHAR(5))"
         );
-        db.execSQL("DELETE FROM SEATDB");
-        db.execSQL("INSERT INTO SEATDB VALUES(0,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(1,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(2,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(3,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(4,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(5,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(6,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(7,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(8,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(9,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(10,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(11,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(12,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(13,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(14,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(15,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(16,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(17,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(18,'0',NULL,0,NULL,NULL,NULL)");
-        db.execSQL("INSERT INTO SEATDB VALUES(19,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("DELETE FROM SEATDB");
+//        db.execSQL("INSERT INTO SEATDB VALUES(0,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(1,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(2,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(3,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(4,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(5,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(6,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(7,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(8,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(9,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(10,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(11,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(12,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(13,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(14,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(15,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(16,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(17,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(18,'0',NULL,0,NULL,NULL,NULL)");
+//        db.execSQL("INSERT INTO SEATDB VALUES(19,'0',NULL,0,NULL,NULL,NULL)");
     }
 
     @Override
@@ -73,6 +73,29 @@ public class SeatDAO extends SQLiteOpenHelper {
                                         "  USERID = '" + id + "' WHERE PCNAME = '"+Pcname+"'");
         db.close();
     }
+    public int selectreserve(SQLiteDatabase db,String id){
+        int reserve = 0;
+        cur = db.rawQuery("SELECT COUNT(*) FROM SEATDB WHERE USERID = '" +id+"'", null);
+        if (cur.moveToNext()) {
+            reserve = cur.getInt(0);
+        }
+        db.close();
+        return reserve;
+    }
 
+    public void updatedelete(SQLiteDatabase db, int Pcname, String Pcstate,String id){
+        db.execSQL("UPDATE SEATDB " + "SET PCSTATE = '"+ Pcstate +"'," +
+                "  USERID = NULL ,PCREVETIME = NULL  WHERE USERID = '"+id+"'");
+        db.close();
+
+    }
+    public int selectprev(SQLiteDatabase db,String id){
+        int prev = -1;
+        cur = db.rawQuery("SELECT PCNAME FROM SEATDB WHERE USERID = '"+id+"'",null);
+        if(cur.moveToNext()){
+            prev = cur.getInt(0);
+        }
+        return prev;
+    }
 
 }

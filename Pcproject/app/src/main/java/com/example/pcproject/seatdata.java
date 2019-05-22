@@ -55,13 +55,18 @@ public class seatdata extends AppCompatActivity {
                 if(seat[i] == 0){
                     item = i;
                     con.sub(seatdata.this, "seatreve");
-
+                    break;
                 }else if(seat[i] == 1){
-                    Toast.makeText(this, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
-                }else{
+                    item = i;
+                    con.sub(seatdata.this,"seatreserve");
+                    break;
+                    }
+                }else  if(seat[i]==2) {
+                    item = i;
                     Toast.makeText(this, "이미 사용중인 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+                    break;
                 }
             }
         }
     }
-}
+
