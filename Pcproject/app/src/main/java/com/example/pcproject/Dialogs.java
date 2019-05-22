@@ -33,7 +33,8 @@ public class Dialogs {
     int infotimeIt;
     String infotimeSt2;
     public String reveTime;
-    SQLiteDatabase db;
+    int timehour;
+    int timeminute;
     String Time[] = {
             "1시간", "2시간", "3시간", "4시간", "5시간",
             "6시간", "7시간", "8시간", "9시간", "10시간"
