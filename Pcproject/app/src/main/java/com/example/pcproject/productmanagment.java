@@ -27,7 +27,7 @@ public class productmanagment extends AppCompatActivity {
     final String SEATMANA = "seatmanager";
 
     String PROADD = "adminproadd";
-    String PRODEL = "adminprodel";
+    String PRODEL = "adminprodeldi";
 
 
     //final String 으로 Controller 보내줘야할 때

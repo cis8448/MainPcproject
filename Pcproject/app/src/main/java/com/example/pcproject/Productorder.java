@@ -13,8 +13,6 @@ import android.widget.Toast;
 public class Productorder extends AppCompatActivity {
 
     Controller con =  Controller.getInstance();
-
-    Intent intent = getIntent();
     public String cate;
     public GridView grid;
     public Listsetting.ProductAdapterSet productAdapterSet;

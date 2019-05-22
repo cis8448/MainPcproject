@@ -64,12 +64,15 @@ public class photoadd extends AppCompatActivity {
                     case -1:
                         ll.setBackgroundColor(Color.GRAY);
                         photoitemset = position;
+                        pos = position;
                         break;
                     default:
                         ll.setBackgroundColor(Color.WHITE);
                         photoitemset = -1;
+                        pos = -1;
+
                 }
-                pos = position;
+
             }
         });
     }

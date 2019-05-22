@@ -36,6 +36,7 @@ public class Controller extends AppCompatActivity {
     int imgpho;
     ArrayList<Productorder> allorder;
     public String time;
+    Listsetting.ProductAdapterSet productAdapterSet;
     private Controller() {
 
     }
@@ -222,7 +223,11 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("adminproadd")){
             Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
+            productAdapterSet = ((productmanagment)activity).proAdapterset;
             activity.startActivity(adminproaddOpen);
+        }
+        if (state.equals("adminprodeldi")){
+            dlg.removeProductDialog(activity);
         }
         if (state.equals("adminprodel")){
             Probean pro = new Probean();
@@ -249,6 +254,8 @@ public class Controller extends AppCompatActivity {
             ((productadd)activity).probean.setProImage(imgpho+"");
             productDAO.insertProduct(db2,((productadd)activity).probean);
             Toast.makeText(activity, "상품이 추가 되었습니다.", Toast.LENGTH_SHORT).show();
+            allpro.add(((productadd)activity).probean);
+            productAdapterSet.notifyDataSetChanged();
             activity.finish();
         }
         if (state.equals("seatreserve")){
@@ -273,30 +280,6 @@ public class Controller extends AppCompatActivity {
             ((seatdata)activity).seat[prev] = 0;
             sub(activity,"seatreve");
 
-        }
-        if (state.equals("seatreserve")){
-            String id = ((MainActivity) mainAct).MyMember.getId();
-            int a = seatDAO.selectreserve(db1,id);
-            if(a == 0){
-                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
-            }else if(a != 0 ){
-                dlg.deleteDialog(activity);
-            }
-        }
-        if (state.equals("seatreserve")){
-            String id = ((MainActivity) mainAct).MyMember.getId();
-            int a = seatDAO.selectreserve(db1,id);
-            if(a == 0){
-                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
-            }else if(a != 0 ){
-                dlg.deleteDialog(activity);
-            }
-        }
-        if (state.equals("mydelete")){
-            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
-            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn1.getBackground());
-            ((seatdata)activity).seat[((seatdata)activity).item] = 0;
-            Toast.makeText(activity, "예약이 취소 되었습니다잉", Toast.LENGTH_SHORT).show();
         }
         if (state.equals("seatListset")){
             allseat = seatDAO.selectall(db1);
