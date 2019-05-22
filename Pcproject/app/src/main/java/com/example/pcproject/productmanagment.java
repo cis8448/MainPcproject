@@ -93,7 +93,6 @@ public class productmanagment extends AppCompatActivity {
         super.onResume();
         if (proListView != null) {
             adapterset.notifyDataSetChanged();
-
         }
 
     }

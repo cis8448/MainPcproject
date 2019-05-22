@@ -41,6 +41,8 @@ public class membermanagment  extends AppCompatActivity {
         }
         con.setActivity(this);
         list1.setAdapter(adapterSet);
+
+
         //컨텍스트 메뉴 추가
         btnadMenu = findViewById(R.id.btnadMenu);
         registerForContextMenu(btnadMenu);

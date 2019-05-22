@@ -67,7 +67,18 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
-
+        <activity android:name=".productcheck">
+            <intent-filter>
+                <action android:name="com.example.pcproject.productcheck"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name=".pay">
+            <intent-filter>
+                <action android:name="com.example.pcproject.pay"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
     </application>
 

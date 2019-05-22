@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".productcheck"
     >
 
     <LinearLayout
@@ -91,7 +92,8 @@
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:text="주문하기"
-                android:background="#CDDC39"/>
+                android:background="#CDDC39"
+                android:onClick="onclickhistory"/>
 
         </LinearLayout>
 

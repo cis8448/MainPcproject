@@ -26,31 +26,41 @@
             android:layout_height="40dp"
             android:text="라면"
             android:layout_weight="1"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="onclickCate"
+            android:id="@+id/proRamen"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:text="커피"
             android:layout_weight="1"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="onclickCate"
+            android:id="@+id/ProCoffee"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:text="밥"
             android:layout_weight="1"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="onclickCate"
+            android:id="@+id/ProRice"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:text="음료"
             android:layout_weight="1"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="onclickCate"
+            android:id="@+id/ProDrink"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:text="기타"
             android:layout_weight="1"
-            android:background="@drawable/blankseat"/>
+            android:background="@drawable/blankseat"
+            android:onClick="onclickCate"
+            android:id="@+id/ProOther"/>
     </LinearLayout>
 
     <GridView
@@ -58,6 +68,7 @@
         android:layout_height="250dp"
         android:numColumns="4"
         android:id="@+id/grid">
+
     </GridView>
 
     <Button

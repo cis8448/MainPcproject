@@ -30,12 +30,12 @@ public class ProductDAO extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS SEATDB");
+        db.execSQL("DROP TABLE IF EXISTS PRODUCTDB");
     }
 
     public ArrayList selectAll(SQLiteDatabase db){
         ArrayList<Probean> allpro = new ArrayList<>();
-        cur = db.rawQuery("SELECT * FROM MEMBER ",null);
+        cur = db.rawQuery("SELECT * FROM PRODUCTDB ",null);
         while (cur.moveToNext()){
             Probean pro = new Probean();
             pro.setProID(cur.getString(0));
@@ -47,5 +47,24 @@ public class ProductDAO extends SQLiteOpenHelper {
             allpro.add(pro);
         }
         return allpro;
+    }
+
+    public ArrayList selectCate(SQLiteDatabase db,String cate){
+        ArrayList<Probean> allorder = new ArrayList<>();
+
+        cur = db.rawQuery("SELECT * FROM PRODUCTDB WHERE PROCATE = '" + cate + "'",null);
+
+        while (cur.moveToNext()){
+            Probean pro = new Probean();
+            pro.setProID(cur.getString(0));
+            pro.setProName(cur.getString(1));
+            pro.setProPrice(cur.getString(2));
+            pro.setProAmount(cur.getString(3));
+            pro.setProCate(cur.getString(4));
+            pro.setProImage(cur.getString(5));
+
+            allorder.add(pro);
+        }
+        return allorder;
     }
 }
