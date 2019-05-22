@@ -30,6 +30,7 @@ public class Controller extends AppCompatActivity {
     ArrayList<Memberbeen> allmem;
     ArrayList<Seatbean> allseat;
     ArrayList<Probean> allpro;
+    ArrayList<Productorder> allorder;
     public String time;
 
     private Controller() {
@@ -262,7 +263,32 @@ public class Controller extends AppCompatActivity {
             listset = new Listsetting(allseat , 3);
             ((seatmanager)activity).seatAdapterSet = listset.seatListSetting();
         }
+        if(state.equals("order")){
+            Intent orderOpen = new Intent("com.example.pcproject.productorder");
+            activity.startActivity(orderOpen);
+        }
+        if(state.equals("ordercate")){
+
+            allorder = productDAO.selectCate(db2,((Productorder)activity).cate);
+            listset = new Listsetting(allorder,2);
+            ((Productorder)activity).productAdapterSet = listset.productListSetting();
+            ((Productorder)activity).grid.setAdapter(((Productorder)activity).productAdapterSet);
+
+
+
+
+        }
+        if(state.equals("orderhistory")){
+            Intent orderhistoryOpen = new Intent("com.example.pcproject.productcheck");
+            activity.startActivity(orderhistoryOpen);
+        }
+
+        if(state.equals("orderpay")){
+            Intent orderpayOpen = new Intent("com.example.pcproject.pay");
+            activity.startActivity(orderpayOpen);
+        }
     }
+
 }
 
 

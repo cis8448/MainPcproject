@@ -59,7 +59,7 @@ public class Productorder extends AppCompatActivity {
    }
 
     public void onclickProOrder(View v){
-        if(grid == null){
+        if(grid.getSelectedItem() == null){
             Toast.makeText(this, "주문등록한 상품이없습니다.", Toast.LENGTH_SHORT).show();
         }
         else {
