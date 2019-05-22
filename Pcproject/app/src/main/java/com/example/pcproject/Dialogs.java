@@ -32,18 +32,14 @@ public class Dialogs {
     Object abj;
     int infotimeIt;
     String infotimeSt2;
-    int timehour;
-    int timeminute;
+    public String reveTime;
     SQLiteDatabase db;
-
-
     String Time[] = {
             "1시간", "2시간", "3시간", "4시간", "5시간",
             "6시간", "7시간", "8시간", "9시간", "10시간"
     };
     ArrayList<String> TimeList = new ArrayList<>();
     ArrayAdapter<String> timeAdapter;
-
     public void myinfoDialog(final Activity act){
         con = Controller.getInstance();
         UpdateView = View.inflate(act, R.layout.myinfoupdate, null);
@@ -95,30 +91,26 @@ public class Dialogs {
     }
     public void reserveDialog(final Activity act) {
         con = Controller.getInstance();
-
         ReserveView = View.inflate(act, R.layout.seatreserve, null);
         AlertDialog.Builder reserveDlg = new AlertDialog.Builder(act);
         reserveDlg.setView(ReserveView);
         final TimePicker timePicker= ReserveView.findViewById(R.id.timepicker);
-        TextView time = ReserveView.findViewById(R.id.mytime);
+        final TextView time = ReserveView.findViewById(R.id.mytime);
         time.setText(con.mybean.getRetime());
         TextView name = ReserveView.findViewById(R.id.myname);
         name.setText(con.mybean.getName());
         TextView seatnum = ReserveView.findViewById(R.id.seatnumber);
         seatnum.setText(((seatdata)act).item + "");
 
-
-
-
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                timehour = timePicker.getHour();
-                timeminute = timePicker.getMinute();
-
+                int timehour = timePicker.getHour();
+                int timeminute = timePicker.getMinute();
+                reveTime = timehour +":"+ timeminute;
+                con.time = reveTime;
             }
         });
-
         reserveDlg.setNegativeButton("취소", null);
         reserveDlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -234,6 +226,32 @@ public class Dialogs {
 
         
         UpdateDlg.show();
+    }
+    public void deleteDialog(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder deleteDlg = new AlertDialog.Builder(act);
+        deleteDlg.setTitle("정말 예약취소하실겁니까? 예?");
+        deleteDlg.setNegativeButton("확인", null);
+        deleteDlg.setPositiveButton("예약취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                con.sub(act, "mydelete");
+            }
+        });
+        deleteDlg.show();
+    }
+    public void moveDialog(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder moveDlg = new AlertDialog.Builder(act);
+        moveDlg.setTitle("이미 예약된 자리가 있습니다. 자리를 옴기시겠습니까?");
+        moveDlg.setNegativeButton("아니오", null);
+        moveDlg.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                con.sub(act, "moving");
+            }
+        });
+        moveDlg.show();
     }
 
     public void removeProductDialog(final Activity act){

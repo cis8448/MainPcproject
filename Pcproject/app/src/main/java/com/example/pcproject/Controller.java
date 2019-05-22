@@ -1,13 +1,13 @@
 package com.example.pcproject;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,22 +17,21 @@ public class Controller extends AppCompatActivity {
     ProductDAO productDAO;
     SeatDAO seatDAO;
     SQLiteDatabase db, db1, db2;
-    ImageView imgs;
     public String intentid;
     public String intentpw;
     public String UpdateItPw;
     public String UpdateItPh;
     public String UpdateItBr;
     public Memberbeen mybean;
-    public Probean probean;
     Activity mainAct;
     Dialogs dlg = new Dialogs();
     static Controller controller;
-    Listsetting listset, prolistset;
+    Listsetting listset;
     ArrayList<Memberbeen> allmem;
+    ArrayList<Seatbean> allseat;
     ArrayList<Probean> allpro;
-    int imgpho;
-
+    ArrayList<Productorder> allorder;
+    public String time;
 
     private Controller() {
 
@@ -52,10 +51,8 @@ public class Controller extends AppCompatActivity {
     public void sub(Activity activity, String state) {
         memberDAO = new MemberDAO(activity);
         seatDAO = new SeatDAO(activity);
-        productDAO = new ProductDAO(activity);
         db = memberDAO.getWritableDatabase();
         db1 = seatDAO.getWritableDatabase();
-        db2 = productDAO.getWritableDatabase();
         if (state.equals("login")) {
             Intent loginOpen = new Intent("com.example.pcproject.login");
             activity.startActivity(loginOpen);
@@ -147,6 +144,7 @@ public class Controller extends AppCompatActivity {
         if (state.equals("addtimefinal")) {
             mybean = ((myinfo) activity).memberbeen;
             memberDAO.updateTime(db, mybean.getId(), mybean.getRetime());
+            ((MainActivity)mainAct).MyMember = ((myinfo) activity).memberbeen;
             Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
             ((myinfo) activity).tvTime.setText(mybean.getRetime());
         }
@@ -165,13 +163,7 @@ public class Controller extends AppCompatActivity {
         if (state.equals("productlist")) {
             Intent productlistOpen = new Intent("com.example.pcproject.productmanagment");
             activity.startActivity(productlistOpen);
-        }//콘텍스트 메뉴에서 상품관리 눌렀을때
-        if (state.equals("productlistset")){
-            allpro = productDAO.selectAll(db2);
-            prolistset = new Listsetting(allpro,2);
-            ((productmanagment) activity).proAdapterset = prolistset.productListSetting();
-
-        }//상품관리의 리스트셋팅을 보여줄때.
+        }
         if (state.equals("seatmanager")) {
             Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
@@ -179,20 +171,24 @@ public class Controller extends AppCompatActivity {
         if (state.equals("seatreve")) {
             //내가 로그인 -> 적립시간의 유무에 따라 분기
             String retime = ((MainActivity) mainAct).MyMember.getRetime();
-            if (retime.equals("0:00") || retime.equals("00:00")) {
-                // 내가 적립시간 X
-                Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
-            } else {
-                // 내가 적립시간 O
-                dlg.reserveDialog(activity);
-//                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
+            int getreveid = seatDAO.selectreserve(db1,mybean.getId());
+            if(getreveid == 1){
+                dlg.moveDialog(activity);
+            }else {
+                if (retime.equals("0:00") || retime.equals("00:00")) {
+                    // 내가 적립시간 X
+                    Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    dlg.reserveDialog(activity);
+                }
             }
 
         }
         if (state.equals("Finalreve")){
-            seatDAO.updatestate(db1,((seatdata)activity).item,"1");
+            seatDAO.updatestate(db1,((seatdata)activity).item,"1",time,mybean.getId());
             ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn2.getBackground());
             ((seatdata)activity).seat[((seatdata)activity).item] = 1;
+            Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
         }
         if (state.equals("userdel")){
             Memberbeen mem = new Memberbeen();
@@ -201,10 +197,10 @@ public class Controller extends AppCompatActivity {
             allmem.remove(((membermanagment)mainAct).itemnum);
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
-        if(state.equals("memberinfoupdate")){
+        if (state.equals("memberinfoupdate")){
             dlg.memberUpdateDailog(activity);
         }
-        if(state.equals("updateinfo")){
+        if (state.equals("updateinfo")){
             memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
                     allmem.get(((membermanagment)mainAct).itemnum).getPass(),
                     allmem.get(((membermanagment)mainAct).itemnum).getPhone(),
@@ -213,35 +209,88 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("adminproadd")){
             Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
-            activity.startActivity(adminproaddOpen);
         }
-        if(state.equals("adminprodel")){
-            Probean pro = new Probean();
-            pro = allpro.get(((productmanagment)activity).proitemsel);
-            productDAO.deleteProduct(db2,pro.getProID());
-            allpro.remove(((productmanagment)mainAct).proitemsel);
-            (((productmanagment)activity)).proAdapterset.notifyDataSetChanged();
+        if (state.equals("seatreserve")){
+            String id = ((MainActivity) mainAct).MyMember.getId();
+            int a = seatDAO.selectreserve(db1,id);
+            if(a == 0){
+                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            }else if(a != 0 ){
+                dlg.deleteDialog(activity);
+            }
         }
-        if(state.equals("prophotoadd")){
-            Intent prophotoaddOpen = new Intent("com.example.pcproject.photoadd");
-            imgs = ((productadd)activity).proaddImV;
-            activity.startActivity(prophotoaddOpen);
+        if (state.equals("mydelete")){
+            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
+            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn1.getBackground());
+            ((seatdata)activity).seat[((seatdata)activity).item] = 0;
+            Toast.makeText(activity, "예약이 취소 되었습니다잉", Toast.LENGTH_SHORT).show();
         }
-        if(state.equals("photoopen")){
-            listset = new Listsetting(((photoadd)activity).Photo);
-            ((photoadd)activity).myPhotoAdapter = listset.photoListsetting();
+        if (state.equals("moving")){
+            int prev =seatDAO.selectprev(db1,mybean.getId());
+            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
+            ((seatdata)activity).btn[prev].setBackground(((seatdata)activity).btn1.getBackground());
+            ((seatdata)activity).seat[prev] = 0;
+            sub(activity,"seatreve");
+
         }
-        if(state.equals("photoadd")){
-            imgpho = ((photoadd)activity).Photo[((photoadd)activity).pos];
-            imgs.setImageResource(((photoadd)activity).Photo[((photoadd)activity).pos]);
-            activity.finish();
+        if (state.equals("seatreserve")){
+            String id = ((MainActivity) mainAct).MyMember.getId();
+            int a = seatDAO.selectreserve(db1,id);
+            if(a == 0){
+                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            }else if(a != 0 ){
+                dlg.deleteDialog(activity);
+            }
         }
-        if(state.equals("proaddlistadd")){
-            ((productadd)activity).probean.setProImage(imgpho+"");
-            productDAO.insertProduct(db2,((productadd)activity).probean);
-            Toast.makeText(activity, "상품이 추가 되었습니다.", Toast.LENGTH_SHORT).show();
-            activity.finish();
+
+        if (state.equals("seatreserve")){
+            String id = ((MainActivity) mainAct).MyMember.getId();
+            int a = seatDAO.selectreserve(db1,id);
+            if(a == 0){
+                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            }else if(a != 0 ){
+                dlg.deleteDialog(activity);
+            }
+        }
+        if (state.equals("mydelete")){
+            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
+            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn1.getBackground());
+            ((seatdata)activity).seat[((seatdata)activity).item] = 0;
+            Toast.makeText(activity, "예약이 취소 되었습니다잉", Toast.LENGTH_SHORT).show();
+        }
+        if (state.equals("seatListset")){
+            allseat = seatDAO.selectall(db1);
+            listset = new Listsetting(allseat , 3);
+            ((seatmanager)activity).seatAdapterSet = listset.seatListSetting();
+        }
+        if(state.equals("order")){
+            Intent orderOpen = new Intent("com.example.pcproject.productorder");
+            activity.startActivity(orderOpen);
+        }
+        if(state.equals("ordercate")){
+
+            allorder = productDAO.selectCate(db2,((Productorder)activity).cate);
+            listset = new Listsetting(allorder,2);
+            ((Productorder)activity).productAdapterSet = listset.productListSetting();
+            ((Productorder)activity).grid.setAdapter(((Productorder)activity).productAdapterSet);
+
+
+
+
+        }
+        if(state.equals("orderhistory")){
+            Intent orderhistoryOpen = new Intent("com.example.pcproject.productcheck");
+            activity.startActivity(orderhistoryOpen);
+        }
+
+        if(state.equals("orderpay")){
+            Intent orderpayOpen = new Intent("com.example.pcproject.pay");
+            activity.startActivity(orderpayOpen);
         }
     }
+
 }
+
+
+
 

@@ -112,4 +112,6 @@ public class MemberDAO extends SQLiteOpenHelper {
         }
         return  allmem;
     }
+
+
 }

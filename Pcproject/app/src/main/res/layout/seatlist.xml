@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:id="@+id/mName"
+            android:id="@+id/pcname"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:id="@+id/mDb"/>
+            android:id="@+id/mstate"/>
 
     </LinearLayout>
     <LinearLayout
@@ -51,20 +51,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:id="@+id/mId"/>
+            android:id="@+id/user"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="사용내역 :"
-            android:layout_weight="1"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"/>
+            android:layout_weight="1"
+            android:text="사용내역 :"
+            android:textSize="20dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:id="@+id/mTime"
+            android:id="@+id/pcstate"
             />
 
     </LinearLayout>

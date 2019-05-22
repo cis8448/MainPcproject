@@ -16,7 +16,6 @@ public class Listsetting {
     ArrayList<Memberbeen> allmember;
     ArrayList<Probean> allproduct;
     ArrayList<Seatbean> allSeat;
-    int[] img;
 
     public Listsetting(Object amem, int category){
         if(category == 1){
@@ -29,19 +28,13 @@ public class Listsetting {
         }
 
     }
-    public Listsetting(int[] img){
-        this.img = img;
-    }
-    public Listsetting(ArrayList<Probean> allpro){
-        this.allproduct = allpro;
-    }
     public MemberAdapterSet memberListSetting(){
         MemberAdapterSet memberAdapter = new MemberAdapterSet(allmember);
         return memberAdapter;
     }
     public class MemberAdapterSet extends BaseAdapter{
         ArrayList<Memberbeen> allmember;
-        public MemberAdapterSet(ArrayList allmem){
+     public MemberAdapterSet(ArrayList allmem){
             this.allmember = allmem;
         }
      @Override
@@ -165,24 +158,24 @@ public class Listsetting {
         }
 
     }
-    public MyPhotoAdapter photoListsetting(){
-        MyPhotoAdapter MyPhotoAdapter = new MyPhotoAdapter(img);
-        return MyPhotoAdapter;
+    public SeatAdapterSet seatListSetting(){
+        SeatAdapterSet seatAdapterSet = new SeatAdapterSet(allSeat);
+        return seatAdapterSet;
     }
-    public class MyPhotoAdapter extends BaseAdapter {
+    public class SeatAdapterSet extends BaseAdapter{
 
-        int[] imgs;
-        public MyPhotoAdapter(int[] imgs){
-            this.imgs = imgs;
+        ArrayList<Seatbean> allseat;
+        public SeatAdapterSet(ArrayList allSeat){
+            this.allseat = allSeat;
         }
         @Override
         public int getCount() {
-            return img.length;
+            return allseat.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return img[position];
+            return allseat.get(position) ;
         }
 
         @Override
@@ -192,15 +185,38 @@ public class Listsetting {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            int proPos = position;
-            Context context = parent.getContext();
-            if (convertView == null) {
-                    LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-                    convertView = inflater.inflate(R.layout.photoitem, parent, false);
-                }
-            ImageView mimg = convertView.findViewById(R.id.proImage);
-            mimg.setImageResource(imgs[position]);
-                return convertView;
+            final int pos = position;
+            final Context context = parent.getContext();
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.seatlist,parent,false);
             }
+            TextView pcnumtxt, pcsatetxt, useridtxt, pcusestatetxt;
+
+            pcnumtxt = convertView.findViewById(R.id.pcname);
+            pcsatetxt = convertView.findViewById(R.id.mstate);
+            useridtxt = convertView.findViewById(R.id.user);
+            pcusestatetxt = convertView.findViewById(R.id.pcstate);
+
+            pcnumtxt.setText(allseat.get(pos).getsPcname());
+            if(allseat.get(pos).getsUsestate().equals("0")){
+                pcsatetxt.setText("빈자리");
+            }else if(allseat.get(pos).getsUsestate().equals("1")){
+                pcsatetxt.setText("예약석");
+            }else{
+                pcsatetxt.setText("사용중");
+            }
+            if(allseat.get(pos).getsUsestate().equals("0")){
+                useridtxt.setText("");
+            }else{
+                useridtxt.setText(allseat.get(pos).getsUserid());
+            }
+
+
+            pcusestatetxt.setText(allseat.get(pos).getsPcstate());
+
+            return convertView;
         }
     }
+
+}
