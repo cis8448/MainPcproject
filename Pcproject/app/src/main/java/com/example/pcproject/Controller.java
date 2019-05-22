@@ -33,6 +33,7 @@ public class Controller extends AppCompatActivity {
     ArrayList<Memberbeen> allmem;
     ArrayList<Seatbean> allseat;
     ArrayList<Probean> allpro;
+    public ArrayList<Probean> selpros;
     int imgpho;
     ArrayList<Productorder> allorder;
     public String time;
@@ -291,23 +292,23 @@ public class Controller extends AppCompatActivity {
             activity.startActivity(orderOpen);
         }
         if (state.equals("ordercate")){
-
             allorder = productDAO.selectCate(db2,((Productorder)activity).cate);
             listset = new Listsetting(allorder,2);
             ((Productorder)activity).productAdapterSet = listset.productListSetting();
             ((Productorder)activity).grid.setAdapter(((Productorder)activity).productAdapterSet);
-
-
-
-
         }
         if (state.equals("orderhistory")){
             Intent orderhistoryOpen = new Intent("com.example.pcproject.productcheck");
+            selpros=((Productorder)activity).selpro;
             activity.startActivity(orderhistoryOpen);
         }
         if (state.equals("orderpay")){
             Intent orderpayOpen = new Intent("com.example.pcproject.pay");
             activity.startActivity(orderpayOpen);
+        }
+        if (state.equals("addpro")){
+           String name = ((Productorder)activity).txtid.getText().toString();
+            ((Productorder)activity).selpro.add(productDAO.selectName(db2,name));
         }
     }
 }

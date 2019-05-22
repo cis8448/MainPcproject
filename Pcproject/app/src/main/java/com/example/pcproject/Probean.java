@@ -1,6 +1,8 @@
 package com.example.pcproject;
 
-public class Probean {
+import java.io.Serializable;
+
+public class Probean implements Serializable{
 
     String proID; //상품 ID PK
     String proName; //상품의 이름

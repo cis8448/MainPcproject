@@ -76,4 +76,17 @@ public class ProductDAO extends SQLiteOpenHelper {
         }
         return allorder;
     }
+    public Probean selectName(SQLiteDatabase db , String name){
+        Probean pro = new Probean();
+        cur = db.rawQuery("SELECT * FROM PRODUCTDB WHERE PRONAME = '" + name + "'",null);
+        if(cur.moveToNext()) {
+            pro.setProID(cur.getString(0));
+            pro.setProName(cur.getString(1));
+            pro.setProPrice(cur.getString(2));
+            pro.setProAmount(cur.getString(3));
+            pro.setProCate(cur.getString(4));
+            pro.setProImage(cur.getString(5));
+        }
+        return pro;
+    }
 }
