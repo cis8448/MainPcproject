@@ -77,12 +77,10 @@ public class Listsetting {
          return convertView;
      }
  }
-
     public ProductAdapterSet productListSetting(){
         ProductAdapterSet productAdapter = new ProductAdapterSet(allproduct);
         return productAdapter;
     }
-
     public class ProductAdapterSet extends BaseAdapter{
         ArrayList<Probean> allproduct;
         public ProductAdapterSet(ArrayList allpro){

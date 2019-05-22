@@ -203,6 +203,10 @@ public class Controller extends AppCompatActivity {
         if (state.equals("adminproadd")){
             Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
         }
+        if(state.equals("order")){
+            Intent orderOpen = new Intent("com.example.pcproject.productorder");
+            activity.startActivity(orderOpen);
+        }
     }
 
 
