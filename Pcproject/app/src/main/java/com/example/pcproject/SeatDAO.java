@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class SeatDAO extends SQLiteOpenHelper {
     Cursor cur;
 
@@ -96,6 +98,20 @@ public class SeatDAO extends SQLiteOpenHelper {
             prev = cur.getInt(0);
         }
         return prev;
+    }
+    public ArrayList<Seatbean> selectall(SQLiteDatabase db) {
+        ArrayList<Seatbean> seatbeans = new ArrayList<>();
+        cur = db.rawQuery("SELECT * FROM SEATDB", null);
+        while (cur.moveToNext()) {
+            Seatbean allseat = new Seatbean();
+            allseat.setsPcname(cur.getString(0));
+            allseat.setsUsestate(cur.getString(1));
+            allseat.setsMemstate(cur.getString(2));
+            allseat.setsUserid(cur.getString(3));
+            allseat.setsUnmem(cur.getString(4));
+            seatbeans.add(allseat);
+        }
+        return seatbeans;
     }
 
 }
