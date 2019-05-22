@@ -135,7 +135,6 @@ public class Controller extends AppCompatActivity {
             int[] ss = seatDAO.selectstate(db1);
             seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
-
         }//좌석화면 띄우기
         if (state.equals("addtime")) {
             dlg.addTimeDialog(activity);
