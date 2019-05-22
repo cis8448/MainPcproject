@@ -274,30 +274,6 @@ public class Controller extends AppCompatActivity {
             sub(activity,"seatreve");
 
         }
-        if (state.equals("seatreserve")){
-            String id = ((MainActivity) mainAct).MyMember.getId();
-            int a = seatDAO.selectreserve(db1,id);
-            if(a == 0){
-                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
-            }else if(a != 0 ){
-                dlg.deleteDialog(activity);
-            }
-        }
-        if (state.equals("seatreserve")){
-            String id = ((MainActivity) mainAct).MyMember.getId();
-            int a = seatDAO.selectreserve(db1,id);
-            if(a == 0){
-                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
-            }else if(a != 0 ){
-                dlg.deleteDialog(activity);
-            }
-        }
-        if (state.equals("mydelete")){
-            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
-            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn1.getBackground());
-            ((seatdata)activity).seat[((seatdata)activity).item] = 0;
-            Toast.makeText(activity, "예약이 취소 되었습니다잉", Toast.LENGTH_SHORT).show();
-        }
         if (state.equals("seatListset")){
             allseat = seatDAO.selectall(db1);
             listset = new Listsetting(allseat , 3);
