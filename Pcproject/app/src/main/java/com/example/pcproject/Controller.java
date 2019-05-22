@@ -29,6 +29,7 @@ public class Controller extends AppCompatActivity {
     Listsetting listset;
     ArrayList<Memberbeen> allmem;
     ArrayList<Probean> allpro;
+    ArrayList<Seatbean> allseat;
     public String time;
 
 
@@ -155,7 +156,6 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("listset")) {
             allmem = memberDAO.selectAll(db);
-            allpro = productDAO.selectAll(db2);
             listset = new Listsetting(allmem , 1);
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
         }
@@ -205,8 +205,11 @@ public class Controller extends AppCompatActivity {
         if (state.equals("adminproadd")){
             Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
         }
+        if (state.equals("seatListset")){
+            allseat = seatDAO.selectall(db1);
+            listset = new Listsetting(allseat , 3);
+            ((seatmanager)activity).seatAdapterSet = listset.seatListSetting();
+        }
     }
-
-
 }
 
