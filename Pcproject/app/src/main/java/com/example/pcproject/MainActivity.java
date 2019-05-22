@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     final String LOGIN = "login";
     final String MYINFO = "myinfo";
     final String SEATDATA = "seatdata";
+    final String ORDER = "order";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 if(item.getTitle().equals("로그인")) {
                     con.sub(MainActivity.this, LOGIN);
                 }else{
-
+                    con.sub(MainActivity.this, ORDER);
                 }
                 break;
             case 2:
