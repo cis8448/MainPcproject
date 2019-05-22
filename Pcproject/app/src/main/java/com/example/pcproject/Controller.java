@@ -1,6 +1,7 @@
 package com.example.pcproject;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,6 +29,7 @@ public class Controller extends AppCompatActivity {
     Listsetting listset;
     ArrayList<Memberbeen> allmem;
     ArrayList<Probean> allpro;
+    public String time;
 
 
     private Controller() {
@@ -133,7 +135,6 @@ public class Controller extends AppCompatActivity {
             int[] ss = seatDAO.selectstate(db1);
             seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
-
         }//좌석화면 띄우기
         if (state.equals("addtime")) {
             dlg.addTimeDialog(activity);
@@ -141,6 +142,7 @@ public class Controller extends AppCompatActivity {
         if (state.equals("addtimefinal")) {
             mybean = ((myinfo) activity).memberbeen;
             memberDAO.updateTime(db, mybean.getId(), mybean.getRetime());
+            ((MainActivity)mainAct).MyMember = ((myinfo) activity).memberbeen;
             Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
             ((myinfo) activity).tvTime.setText(mybean.getRetime());
         }
@@ -179,7 +181,7 @@ public class Controller extends AppCompatActivity {
 
         }
         if (state.equals("Finalreve")){
-            seatDAO.updatestate(db1,((seatdata)activity).item,"1");
+            seatDAO.updatestate(db1,((seatdata)activity).item,"1",time,mybean.getId());
             ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn2.getBackground());
             ((seatdata)activity).seat[((seatdata)activity).item] = 1;
         }
@@ -190,10 +192,10 @@ public class Controller extends AppCompatActivity {
             allmem.remove(((membermanagment)mainAct).itemnum);
             ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
         }
-        if(state.equals("memberinfoupdate")){
+        if (state.equals("memberinfoupdate")){
             dlg.memberUpdateDailog(activity);
         }
-        if(state.equals("updateinfo")){
+        if (state.equals("updateinfo")){
             memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
                     allmem.get(((membermanagment)mainAct).itemnum).getPass(),
                     allmem.get(((membermanagment)mainAct).itemnum).getPhone(),

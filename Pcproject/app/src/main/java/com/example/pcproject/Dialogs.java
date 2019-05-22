@@ -32,18 +32,14 @@ public class Dialogs {
     Object abj;
     int infotimeIt;
     String infotimeSt2;
-    int timehour;
-    int timeminute;
+    public String reveTime;
     SQLiteDatabase db;
-
-
     String Time[] = {
             "1시간", "2시간", "3시간", "4시간", "5시간",
             "6시간", "7시간", "8시간", "9시간", "10시간"
     };
     ArrayList<String> TimeList = new ArrayList<>();
     ArrayAdapter<String> timeAdapter;
-
     public void myinfoDialog(final Activity act){
         con = Controller.getInstance();
         UpdateView = View.inflate(act, R.layout.myinfoupdate, null);
@@ -100,7 +96,7 @@ public class Dialogs {
         AlertDialog.Builder reserveDlg = new AlertDialog.Builder(act);
         reserveDlg.setView(ReserveView);
         final TimePicker timePicker= ReserveView.findViewById(R.id.timepicker);
-        TextView time = ReserveView.findViewById(R.id.mytime);
+        final TextView time = ReserveView.findViewById(R.id.mytime);
         time.setText(con.mybean.getRetime());
         TextView name = ReserveView.findViewById(R.id.myname);
         name.setText(con.mybean.getName());
@@ -113,9 +109,10 @@ public class Dialogs {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                timehour = timePicker.getHour();
-                timeminute = timePicker.getMinute();
-
+                int timehour = timePicker.getHour();
+                int timeminute = timePicker.getMinute();
+                reveTime = timehour +":"+ timeminute;
+                con.time = reveTime;
             }
         });
 

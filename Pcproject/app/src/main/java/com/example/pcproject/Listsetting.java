@@ -28,16 +28,13 @@ public class Listsetting {
         }
 
     }
-    public Listsetting(ArrayList<Probean> allpro){
-        this.allproduct = allpro;
-    }
     public MemberAdapterSet memberListSetting(){
         MemberAdapterSet memberAdapter = new MemberAdapterSet(allmember);
         return memberAdapter;
     }
     public class MemberAdapterSet extends BaseAdapter{
         ArrayList<Memberbeen> allmember;
-        public MemberAdapterSet(ArrayList allmem){
+     public MemberAdapterSet(ArrayList allmem){
             this.allmember = allmem;
         }
      @Override
@@ -160,6 +157,54 @@ public class Listsetting {
             //instanceof 될지 모름
         }
 
+    }
+    public SeatAdapterSet seatListSetting(){
+        SeatAdapterSet seatAdapterSet = new SeatAdapterSet(allSeat);
+        return seatAdapterSet;
+    }
+    public class SeatAdapterSet extends BaseAdapter{
+
+        ArrayList<Seatbean> allseat;
+        public SeatAdapterSet(ArrayList allSeat){
+            this.allseat = allSeat;
+        }
+        @Override
+        public int getCount() {
+            return allmember.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return allmember.get(position) ;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final int pos = position;
+            final Context context = parent.getContext();
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.seatlist,parent,false);
+            }
+            TextView pcnumtxt, pcsatetxt, useridtxt, pcusestatetxt;
+
+            pcnumtxt = convertView.findViewById(R.id.pcname);
+            pcsatetxt = convertView.findViewById(R.id.mstate);
+            useridtxt = convertView.findViewById(R.id.user);
+            pcusestatetxt = convertView.findViewById(R.id.pcstate);
+
+            pcnumtxt.setText(allseat.get(pos).getsPcname());
+            pcsatetxt.setText(allseat.get(pos).getsPcstate());
+            useridtxt.setText(allseat.get(pos).getsUserid());
+            pcusestatetxt.setText(allseat.get(pos).getsUsestate());
+
+            return convertView;
+        }
     }
 
 }
