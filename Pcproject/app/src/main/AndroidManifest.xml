@@ -61,6 +61,18 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".productadd">
+            <intent-filter>
+                <action android:name="com.example.pcproject.productadd"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name=".photoadd">
+            <intent-filter>
+                <action android:name="com.example.pcproject.photoadd"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
 
     </application>

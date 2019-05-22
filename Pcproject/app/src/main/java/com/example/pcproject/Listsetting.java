@@ -16,6 +16,7 @@ public class Listsetting {
     ArrayList<Memberbeen> allmember;
     ArrayList<Probean> allproduct;
     ArrayList<Seatbean> allSeat;
+    int[] img;
 
     public Listsetting(Object amem, int category){
         if(category == 1){
@@ -27,6 +28,9 @@ public class Listsetting {
             allSeat = (ArrayList<Seatbean>)amem;
         }
 
+    }
+    public Listsetting(int[] img){
+        this.img = img;
     }
     public Listsetting(ArrayList<Probean> allpro){
         this.allproduct = allpro;
@@ -77,12 +81,10 @@ public class Listsetting {
          return convertView;
      }
  }
-
     public ProductAdapterSet productListSetting(){
         ProductAdapterSet productAdapter = new ProductAdapterSet(allproduct);
         return productAdapter;
     }
-
     public class ProductAdapterSet extends BaseAdapter{
         ArrayList<Probean> allproduct;
         public ProductAdapterSet(ArrayList allpro){
@@ -163,5 +165,42 @@ public class Listsetting {
         }
 
     }
+    public MyPhotoAdapter photoListsetting(){
+        MyPhotoAdapter MyPhotoAdapter = new MyPhotoAdapter(img);
+        return MyPhotoAdapter;
+    }
+    public class MyPhotoAdapter extends BaseAdapter {
 
-}
+        int[] imgs;
+        public MyPhotoAdapter(int[] imgs){
+            this.imgs = imgs;
+        }
+        @Override
+        public int getCount() {
+            return img.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return img[position];
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            int proPos = position;
+            Context context = parent.getContext();
+            if (convertView == null) {
+                    LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+                    convertView = inflater.inflate(R.layout.photoitem, parent, false);
+                }
+            ImageView mimg = convertView.findViewById(R.id.proImage);
+            mimg.setImageResource(imgs[position]);
+                return convertView;
+            }
+        }
+    }

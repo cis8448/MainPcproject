@@ -1,5 +1,6 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,16 +15,20 @@ import android.widget.ListView;
 public class productmanagment extends AppCompatActivity {
 
     public ListView proListView;
-    public Listsetting.ProductAdapterSet adapterset;
+    public Listsetting.ProductAdapterSet proAdapterset;
     Controller con = Controller.getInstance();
-    final String LISTSET = "listset";
+    final String PROLISTSET = "productlistset";
+    public int proitemsel = -1;
     Button btnadMenu, productAdd, productDel;
+    Listsetting listset ;
+    Context context;
 
     final String MEMBERMANA = "adminLogin";
     final String SEATMANA = "seatmanager";
+
     String PROADD = "adminproadd";
     String PRODEL = "adminprodel";
-    public int itemnum;
+
 
     //final String 으로 Controller 보내줘야할 때
 
@@ -35,22 +40,31 @@ public class productmanagment extends AppCompatActivity {
         productDel = findViewById(R.id.productDel);
         proListView = findViewById(R.id.proListView);
 
-        if (adapterset == null) {
-            con.sub(productmanagment.this, LISTSET);
+        if (proAdapterset == null) {
+            con.sub(productmanagment.this, PROLISTSET);
         }
         con.setActivity(this);
-        proListView.setAdapter(adapterset);
+        proListView.setAdapter(proAdapterset);
+
+        registerForContextMenu(btnadMenu);
+        btnadMenu.setLongClickable(true);
 
         proListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                itemnum = position;
                 LinearLayout proll = view.findViewById(R.id.proll);
-                proll.setBackgroundColor(Color.GRAY);
+                switch (proitemsel) {
+                        case -1:
+                            proll.setBackgroundColor(Color.GRAY);
+                            proitemsel = position;
+                            break;
+                        default:
+                            proll.setBackgroundColor(Color.WHITE);
+                            proitemsel = -1;
+                }
             }
         });
-        registerForContextMenu(btnadMenu);
-        btnadMenu.setLongClickable(true);
+
     }//onCreate
 
     @Override
@@ -81,7 +95,7 @@ public class productmanagment extends AppCompatActivity {
     public void onClickProbtn(View v) {
         switch (v.getId()) {
             case R.id.productAdd:
-                con.sub(this, PROADD);
+                con.sub(productmanagment.this, PROADD);
                 break;
             case R.id.productDel:
                 con.sub(this, PRODEL);
@@ -89,12 +103,5 @@ public class productmanagment extends AppCompatActivity {
         }
     }
 
-    protected void onResume() {
-        super.onResume();
-        if (proListView != null) {
-            adapterset.notifyDataSetChanged();
 
-        }
-
-    }
 }

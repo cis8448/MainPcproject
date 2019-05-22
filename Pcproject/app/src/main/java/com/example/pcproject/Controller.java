@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,18 +17,21 @@ public class Controller extends AppCompatActivity {
     ProductDAO productDAO;
     SeatDAO seatDAO;
     SQLiteDatabase db, db1, db2;
+    ImageView imgs;
     public String intentid;
     public String intentpw;
     public String UpdateItPw;
     public String UpdateItPh;
     public String UpdateItBr;
     public Memberbeen mybean;
+    public Probean probean;
     Activity mainAct;
     Dialogs dlg = new Dialogs();
     static Controller controller;
-    Listsetting listset;
+    Listsetting listset, prolistset;
     ArrayList<Memberbeen> allmem;
     ArrayList<Probean> allpro;
+    int imgpho;
 
 
     private Controller() {
@@ -48,8 +52,10 @@ public class Controller extends AppCompatActivity {
     public void sub(Activity activity, String state) {
         memberDAO = new MemberDAO(activity);
         seatDAO = new SeatDAO(activity);
+        productDAO = new ProductDAO(activity);
         db = memberDAO.getWritableDatabase();
         db1 = seatDAO.getWritableDatabase();
+        db2 = productDAO.getWritableDatabase();
         if (state.equals("login")) {
             Intent loginOpen = new Intent("com.example.pcproject.login");
             activity.startActivity(loginOpen);
@@ -153,14 +159,19 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("listset")) {
             allmem = memberDAO.selectAll(db);
-            allpro = productDAO.selectAll(db2);
             listset = new Listsetting(allmem , 1);
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
         }
         if (state.equals("productlist")) {
             Intent productlistOpen = new Intent("com.example.pcproject.productmanagment");
             activity.startActivity(productlistOpen);
-        }
+        }//콘텍스트 메뉴에서 상품관리 눌렀을때
+        if (state.equals("productlistset")){
+            allpro = productDAO.selectAll(db2);
+            prolistset = new Listsetting(allpro,2);
+            ((productmanagment) activity).proAdapterset = prolistset.productListSetting();
+
+        }//상품관리의 리스트셋팅을 보여줄때.
         if (state.equals("seatmanager")) {
             Intent seatmanagerOpen = new Intent("com.example.pcproject.seatmanager");
             activity.startActivity(seatmanagerOpen);
@@ -202,9 +213,35 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("adminproadd")){
             Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
+            activity.startActivity(adminproaddOpen);
+        }
+        if(state.equals("adminprodel")){
+            Probean pro = new Probean();
+            pro = allpro.get(((productmanagment)activity).proitemsel);
+            productDAO.deleteProduct(db2,pro.getProID());
+            allpro.remove(((productmanagment)mainAct).proitemsel);
+            (((productmanagment)activity)).proAdapterset.notifyDataSetChanged();
+        }
+        if(state.equals("prophotoadd")){
+            Intent prophotoaddOpen = new Intent("com.example.pcproject.photoadd");
+            imgs = ((productadd)activity).proaddImV;
+            activity.startActivity(prophotoaddOpen);
+        }
+        if(state.equals("photoopen")){
+            listset = new Listsetting(((photoadd)activity).Photo);
+            ((photoadd)activity).myPhotoAdapter = listset.photoListsetting();
+        }
+        if(state.equals("photoadd")){
+            imgpho = ((photoadd)activity).Photo[((photoadd)activity).pos];
+            imgs.setImageResource(((photoadd)activity).Photo[((photoadd)activity).pos]);
+            activity.finish();
+        }
+        if(state.equals("proaddlistadd")){
+            ((productadd)activity).probean.setProImage(imgpho+"");
+            productDAO.insertProduct(db2,((productadd)activity).probean);
+            Toast.makeText(activity, "상품이 추가 되었습니다.", Toast.LENGTH_SHORT).show();
+            activity.finish();
         }
     }
-
-
 }
 

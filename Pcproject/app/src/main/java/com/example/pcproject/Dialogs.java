@@ -236,4 +236,18 @@ public class Dialogs {
         UpdateDlg.show();
     }
 
+    public void removeProductDialog(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder removeProdlg = new AlertDialog.Builder(act);
+        removeProdlg.setTitle("상품을 삭제하시겠습니까? ");
+        removeProdlg.setNegativeButton("취소",null);
+        removeProdlg.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                con.sub(act, "adminprodel");
+            }
+        });
+        removeProdlg.show();
+    }
+
 }

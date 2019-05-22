@@ -32,10 +32,19 @@ public class ProductDAO extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS SEATDB");
     }
+    public void insertProduct(SQLiteDatabase db, Probean pro){
+        db.execSQL("INSERT INTO PRODUCTDB VALUES('"+ pro.getProCate() + pro.getProName() +"', '"+ pro.getProName() +"'," +
+                "'"+ pro.getProPrice() +"','"+ pro.getProAmount() +"', '"+ pro.getProCate() +"', '"+ pro.getProImage() +"')");
+        db.close();
+    }
+    public void deleteProduct(SQLiteDatabase db, String Id){
+        db.execSQL("DELETE FROM PRODUCTDB WHERE PROID = '"+ Id +"'");
+        db.close();
+    }
 
     public ArrayList selectAll(SQLiteDatabase db){
         ArrayList<Probean> allpro = new ArrayList<>();
-        cur = db.rawQuery("SELECT * FROM MEMBER ",null);
+        cur = db.rawQuery("SELECT * FROM PRODUCTDB ",null);
         while (cur.moveToNext()){
             Probean pro = new Probean();
             pro.setProID(cur.getString(0));
