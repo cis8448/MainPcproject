@@ -170,12 +170,12 @@ public class Listsetting {
         }
         @Override
         public int getCount() {
-            return allmember.size();
+            return allseat.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return allmember.get(position) ;
+            return allseat.get(position) ;
         }
 
         @Override
@@ -199,9 +199,21 @@ public class Listsetting {
             pcusestatetxt = convertView.findViewById(R.id.pcstate);
 
             pcnumtxt.setText(allseat.get(pos).getsPcname());
-            pcsatetxt.setText(allseat.get(pos).getsPcstate());
-            useridtxt.setText(allseat.get(pos).getsUserid());
-            pcusestatetxt.setText(allseat.get(pos).getsUsestate());
+            if(allseat.get(pos).getsUsestate().equals("0")){
+                pcsatetxt.setText("빈자리");
+            }else if(allseat.get(pos).getsUsestate().equals("1")){
+                pcsatetxt.setText("예약석");
+            }else{
+                pcsatetxt.setText("사용중");
+            }
+            if(allseat.get(pos).getsUsestate().equals("0")){
+                useridtxt.setText("");
+            }else{
+                useridtxt.setText(allseat.get(pos).getsUserid());
+            }
+
+
+            pcusestatetxt.setText(allseat.get(pos).getsPcstate());
 
             return convertView;
         }

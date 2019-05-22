@@ -28,11 +28,9 @@ public class Controller extends AppCompatActivity {
     static Controller controller;
     Listsetting listset;
     ArrayList<Memberbeen> allmem;
+    ArrayList<Seatbean> allseat;
     ArrayList<Probean> allpro;
-    ArrayList<Productorder> allorder;
-
     public String time;
-
 
     private Controller() {
 
@@ -52,7 +50,6 @@ public class Controller extends AppCompatActivity {
     public void sub(Activity activity, String state) {
         memberDAO = new MemberDAO(activity);
         seatDAO = new SeatDAO(activity);
-        productDAO = new ProductDAO(activity);
         db = memberDAO.getWritableDatabase();
         db1 = seatDAO.getWritableDatabase();
         if (state.equals("login")) {
@@ -138,6 +135,7 @@ public class Controller extends AppCompatActivity {
             int[] ss = seatDAO.selectstate(db1);
             seatdataOpen.putExtra("좌석", ss);
             activity.startActivity(seatdataOpen);
+
         }//좌석화면 띄우기
         if (state.equals("addtime")) {
             dlg.addTimeDialog(activity);
@@ -158,7 +156,6 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("listset")) {
             allmem = memberDAO.selectAll(db);
-            allpro = productDAO.selectAll(db2);
             listset = new Listsetting(allmem , 1);
             ((membermanagment) activity).adapterSet = listset.memberListSetting();
         }
@@ -173,13 +170,16 @@ public class Controller extends AppCompatActivity {
         if (state.equals("seatreve")) {
             //내가 로그인 -> 적립시간의 유무에 따라 분기
             String retime = ((MainActivity) mainAct).MyMember.getRetime();
-            if (retime.equals("0:00") || retime.equals("00:00")) {
-                // 내가 적립시간 X
-                Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
-            } else {
-                // 내가 적립시간 O
-                dlg.reserveDialog(activity);
-//                Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
+            int getreveid = seatDAO.selectreserve(db1,mybean.getId());
+            if(getreveid == 1){
+                dlg.moveDialog(activity);
+            }else {
+                if (retime.equals("0:00") || retime.equals("00:00")) {
+                    // 내가 적립시간 X
+                    Toast.makeText(activity, "적립 시간이 없어 예약 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    dlg.reserveDialog(activity);
+                }
             }
 
         }
@@ -187,6 +187,7 @@ public class Controller extends AppCompatActivity {
             seatDAO.updatestate(db1,((seatdata)activity).item,"1",time,mybean.getId());
             ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn2.getBackground());
             ((seatdata)activity).seat[((seatdata)activity).item] = 1;
+            Toast.makeText(activity, "예약이 되었습니다.", Toast.LENGTH_SHORT).show();
         }
         if (state.equals("userdel")){
             Memberbeen mem = new Memberbeen();
@@ -208,32 +209,62 @@ public class Controller extends AppCompatActivity {
         if (state.equals("adminproadd")){
             Intent adminproaddOpen = new Intent("com.example.pcproject.productadd");
         }
-        if(state.equals("order")){
-            Intent orderOpen = new Intent("com.example.pcproject.productorder");
-            activity.startActivity(orderOpen);
+        if (state.equals("seatreserve")){
+            String id = ((MainActivity) mainAct).MyMember.getId();
+            int a = seatDAO.selectreserve(db1,id);
+            if(a == 0){
+                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            }else if(a != 0 ){
+                dlg.deleteDialog(activity);
+            }
         }
-        if(state.equals("ordercate")){
-
-            allorder = productDAO.selectCate(db2,((Productorder)activity).cate);
-             listset = new Listsetting(allorder,2);
-            ((Productorder)activity).productAdapterSet = listset.productListSetting();
-            ((Productorder)activity).grid.setAdapter(((Productorder)activity).productAdapterSet);
-
-
-
+        if (state.equals("mydelete")){
+            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
+            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn1.getBackground());
+            ((seatdata)activity).seat[((seatdata)activity).item] = 0;
+            Toast.makeText(activity, "예약이 취소 되었습니다잉", Toast.LENGTH_SHORT).show();
+        }
+        if (state.equals("moving")){
+            int prev =seatDAO.selectprev(db1,mybean.getId());
+            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
+            ((seatdata)activity).btn[prev].setBackground(((seatdata)activity).btn1.getBackground());
+            ((seatdata)activity).seat[prev] = 0;
+            sub(activity,"seatreve");
 
         }
-        if(state.equals("orderhistory")){
-            Intent orderhistoryOpen = new Intent("com.example.pcproject.productcheck");
-            activity.startActivity(orderhistoryOpen);
-         }
+        if (state.equals("seatreserve")){
+            String id = ((MainActivity) mainAct).MyMember.getId();
+            int a = seatDAO.selectreserve(db1,id);
+            if(a == 0){
+                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            }else if(a != 0 ){
+                dlg.deleteDialog(activity);
+            }
+        }
 
-        if(state.equals("orderpay")){
-            Intent orderpayOpen = new Intent("com.example.pcproject.pay");
-            activity.startActivity(orderpayOpen);
+        if (state.equals("seatreserve")){
+            String id = ((MainActivity) mainAct).MyMember.getId();
+            int a = seatDAO.selectreserve(db1,id);
+            if(a == 0){
+                Toast.makeText(activity, "이미 예약된 좌석입니다. 다른 좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            }else if(a != 0 ){
+                dlg.deleteDialog(activity);
+            }
+        }
+        if (state.equals("mydelete")){
+            seatDAO.updatedelete(db1,((seatdata)activity).item,"0",mybean.getId());
+            ((seatdata)activity).btn[((seatdata)activity).item].setBackground(((seatdata)activity).btn1.getBackground());
+            ((seatdata)activity).seat[((seatdata)activity).item] = 0;
+            Toast.makeText(activity, "예약이 취소 되었습니다잉", Toast.LENGTH_SHORT).show();
+        }
+        if (state.equals("seatListset")){
+            allseat = seatDAO.selectall(db1);
+            listset = new Listsetting(allseat , 3);
+            ((seatmanager)activity).seatAdapterSet = listset.seatListSetting();
         }
     }
-
-
 }
+
+
+
 

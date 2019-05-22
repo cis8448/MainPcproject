@@ -43,10 +43,16 @@ public class membermanagment  extends AppCompatActivity {
         list1.setAdapter(adapterSet);
 
 
+
+
+
         //컨텍스트 메뉴 추가
         btnadMenu = findViewById(R.id.btnadMenu);
         registerForContextMenu(btnadMenu);
         btnadMenu.setLongClickable(true);
+
+
+
         list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,6 +70,9 @@ public class membermanagment  extends AppCompatActivity {
                 }
             }
         });
+
+
+
         list1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

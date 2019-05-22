@@ -91,7 +91,6 @@ public class Dialogs {
     }
     public void reserveDialog(final Activity act) {
         con = Controller.getInstance();
-
         ReserveView = View.inflate(act, R.layout.seatreserve, null);
         AlertDialog.Builder reserveDlg = new AlertDialog.Builder(act);
         reserveDlg.setView(ReserveView);
@@ -103,9 +102,6 @@ public class Dialogs {
         TextView seatnum = ReserveView.findViewById(R.id.seatnumber);
         seatnum.setText(((seatdata)act).item + "");
 
-
-
-
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
@@ -115,7 +111,6 @@ public class Dialogs {
                 con.time = reveTime;
             }
         });
-
         reserveDlg.setNegativeButton("취소", null);
         reserveDlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -231,6 +226,32 @@ public class Dialogs {
 
         
         UpdateDlg.show();
+    }
+    public void deleteDialog(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder deleteDlg = new AlertDialog.Builder(act);
+        deleteDlg.setTitle("정말 예약취소하실겁니까? 예?");
+        deleteDlg.setNegativeButton("확인", null);
+        deleteDlg.setPositiveButton("예약취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                con.sub(act, "mydelete");
+            }
+        });
+        deleteDlg.show();
+    }
+    public void moveDialog(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder moveDlg = new AlertDialog.Builder(act);
+        moveDlg.setTitle("이미 예약된 자리가 있습니다. 자리를 옴기시겠습니까?");
+        moveDlg.setNegativeButton("아니오", null);
+        moveDlg.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                con.sub(act, "moving");
+            }
+        });
+        moveDlg.show();
     }
 
 }
