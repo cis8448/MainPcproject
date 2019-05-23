@@ -1,5 +1,6 @@
 package com.example.pcproject;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
@@ -61,6 +62,9 @@ public class myinfo extends AppCompatActivity {
     }
     public void OnclickTimeadd(View v){
         con.sub(myinfo.this,addtime);
+    }
+    public void Onclickrevecheck(View v){
+        con.sub(myinfo.this,"revecheck");
     }
 
 }

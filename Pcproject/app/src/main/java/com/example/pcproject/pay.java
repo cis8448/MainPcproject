@@ -2,12 +2,14 @@ package com.example.pcproject;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 public class pay extends AppCompatActivity {
+    Controller con = Controller.getInstance();
 
     Spinner sp1;
 
@@ -40,5 +42,8 @@ public class pay extends AppCompatActivity {
         sp1.setAdapter(adapter);
 
         sp1.setSelection(0);
+    }
+    public void onclickfinish(View v){
+        con.sub(this,"payend");
     }
 }

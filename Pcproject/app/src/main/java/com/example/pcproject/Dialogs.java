@@ -254,7 +254,6 @@ public class Dialogs {
         });
         moveDlg.show();
     }
-
     public void removeProductDialog(final Activity act){
         con = Controller.getInstance();
         AlertDialog.Builder removeProdlg = new AlertDialog.Builder(act);
@@ -267,6 +266,13 @@ public class Dialogs {
             }
         });
         removeProdlg.show();
+    }
+    public void revecheck(final Activity act){
+        con = Controller.getInstance();
+        AlertDialog.Builder moveDlg = new AlertDialog.Builder(act);
+        moveDlg.setTitle("예약하신 좌석은 " +con.reveseat.getsPcname() + "입니다.");
+        moveDlg.setPositiveButton("확인", null);
+        moveDlg.show();
     }
 
 }

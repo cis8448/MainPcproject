@@ -21,12 +21,14 @@ public class Controller extends AppCompatActivity {
     ImageView imgs;
     public String intentid;
     public String intentpw;
-    public String UpdateItPw;
+    public String seatreveTime;
     public String UpdateItPh;
     public String UpdateItBr;
     public Memberbeen mybean;
     public Probean probean;
+    public Seatbean reveseat;
     Activity mainAct;
+    Activity subAct;
     Dialogs dlg = new Dialogs();
     static Controller controller;
     Listsetting listset, prolistset;
@@ -52,7 +54,12 @@ public class Controller extends AppCompatActivity {
     public void setActivity(Activity act) {
         mainAct = act;
     }//액티비티저장
-
+    public void setActivity2(Activity act) {
+        subAct = act;
+    }
+    public static void cutComtroll(){
+        controller = null;
+    }
     public void sub(Activity activity, String state) {
         memberDAO = new MemberDAO(activity);
         seatDAO = new SeatDAO(activity);
@@ -87,7 +94,7 @@ public class Controller extends AppCompatActivity {
             }
         }//로그인 처리
         if (state.equals("ClearLogin")) {
-            ((MainActivity) mainAct).MyMember = mybean;
+            ((MainActivity)mainAct).MyMember = mybean;
             activity.finish();
 
         }//로그인 완료
@@ -292,7 +299,13 @@ public class Controller extends AppCompatActivity {
             activity.startActivity(orderOpen);
         }
         if (state.equals("ordercate")){
-            allorder = productDAO.selectCate(db2,((Productorder)activity).cate);
+            allorder = productDAO.selectCate(db2, ((Productorder) activity).cate);
+            listset = new Listsetting(allorder,2);
+            ((Productorder)activity).productAdapterSet = listset.productListSetting();
+            ((Productorder)activity).grid.setAdapter(((Productorder)activity).productAdapterSet);
+        }
+        if (state.equals("ordercate")){
+            allorder = productDAO.selectCate(db2, ((Productorder) activity).cate);
             listset = new Listsetting(allorder,2);
             ((Productorder)activity).productAdapterSet = listset.productListSetting();
             ((Productorder)activity).grid.setAdapter(((Productorder)activity).productAdapterSet);
@@ -308,11 +321,46 @@ public class Controller extends AppCompatActivity {
         }
         if (state.equals("addpro")){
            String name = ((Productorder)activity).txtid.getText().toString();
-            ((Productorder)activity).selpro.add(productDAO.selectName(db2,name));
+            Probean pro = productDAO.selectName(db2, name);
+            int k = 0;
+            if(((Productorder)activity).selpro.size()!=0) {
+                for (int i = 0; i < ((Productorder) activity).selpro.size(); i++) {
+                    if(((Productorder) activity).selpro.get(i).getProName().equals(name)){
+                        Toast.makeText(activity, "이미 주문하신 상품입니다.", Toast.LENGTH_SHORT).show();
+                        k=0;
+                        break;
+                    }else{
+                        k=1;
+                    }
+                }
+            }
+               if(((Productorder)activity).selpro.size()==0 || k == 1 ) {
+                   ((Productorder) activity).selpro.add(pro);
+               }
+        }
+        if (state.equals("payend")){
+            selpros.clear();
+            subAct.finish();
+            activity.finish();
+        }
+        if (state.equals("revecheck")){
+            int k = 0;
+            allseat = seatDAO.selectall(db1);
+            String id= mybean.getId();
+            if(allseat.get(0).getsUserid() != null) {
+                for (int i = 0; i < allseat.size(); i++) {
+                    if (allseat.get(i).getsUserid().equals(id)) {
+                        reveseat = allseat.get(i);
+                        dlg.revecheck(activity);
+                        k = 1;
+                        break;
+                    }
+                }
+            }
+            if(k ==0){
+                Toast.makeText(activity, "예약된 좌석이 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 }
-
-
-
-

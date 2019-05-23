@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,  MyMember.getName()+"님 로그아웃 되셨습니다", Toast.LENGTH_SHORT).show();
                 MyMember = null;
                 MyMember = new Memberbeen();
+                con.cutComtroll();
+                con = Controller.getInstance();
+                con.setActivity(MainActivity.this);
                 break;
         }
         return super.onContextItemSelected(item);
@@ -89,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(getApplicationContext(), MyMember.getPhone(), Toast.LENGTH_SHORT).show();
+        if(MyMember.getName() != null) {
+            Toast.makeText(getApplicationContext(), "환영합니다. " + MyMember.getName(), Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

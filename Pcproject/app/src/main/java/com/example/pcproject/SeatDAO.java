@@ -105,10 +105,11 @@ public class SeatDAO extends SQLiteOpenHelper {
         while (cur.moveToNext()) {
             Seatbean allseat = new Seatbean();
             allseat.setsPcname(cur.getString(0));
-            allseat.setsUsestate(cur.getString(1));
-            allseat.setsMemstate(cur.getString(2));
-            allseat.setsUserid(cur.getString(3));
-            allseat.setsUnmem(cur.getString(4));
+            allseat.setsPcstate(cur.getString(1));
+            allseat.setsUsestate(cur.getString(2));
+            allseat.setsMemstate(cur.getString(3));
+            allseat.setsUserid(cur.getString(4));
+            allseat.setsUnmem(cur.getString(5));
             seatbeans.add(allseat);
         }
         return seatbeans;
