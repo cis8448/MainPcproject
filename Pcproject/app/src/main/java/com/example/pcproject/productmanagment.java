@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class productmanagment extends AppCompatActivity {
 
@@ -98,7 +99,11 @@ public class productmanagment extends AppCompatActivity {
                 con.sub(productmanagment.this, PROADD);
                 break;
             case R.id.productDel:
-                con.sub(this, PRODEL);
+                if(proitemsel != -1) {
+                    con.sub(this, PRODEL);
+                }else{
+                    Toast.makeText(getApplicationContext(), "삭제할 상품을 선택해 주세요", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
 
-            menu.add(0,1,100,"상품등록");
+            menu.add(0,1,100,"상품주문");
 
             menu.add(0,2,100,"좌석정보");
 

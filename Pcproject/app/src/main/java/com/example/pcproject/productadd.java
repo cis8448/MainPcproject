@@ -79,6 +79,9 @@ public class productadd extends AppCompatActivity {
 
         con.sub(productadd.this,PROADDLISTADD);
     }
+    public void onClickProcancelbtn(View v){
+        finish();
+    }
 
     @Override
     protected void onResume() {

@@ -63,7 +63,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="커피  "
+                        android:text="음료  "
                         android:id="@+id/rgbtn2"
                         />
                     <RadioButton
@@ -180,7 +180,7 @@
                 android:background="#FFEB3B"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/procel"
-                android:onClick="onClickProaddbtn"/>
+                android:onClick="onClickProcancelbtn"/>
 
         </LinearLayout>
     </LinearLayout>
