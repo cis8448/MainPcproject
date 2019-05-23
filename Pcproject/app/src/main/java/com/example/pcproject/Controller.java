@@ -347,8 +347,8 @@ public class Controller extends AppCompatActivity {
             int k = 0;
             allseat = seatDAO.selectall(db1);
             String id= mybean.getId();
-            if(allseat.get(0).getsUserid() != null) {
                 for (int i = 0; i < allseat.size(); i++) {
+                    if(allseat.get(i).getsUserid() != null) {
                     if (allseat.get(i).getsUserid().equals(id)) {
                         reveseat = allseat.get(i);
                         dlg.revecheck(activity);

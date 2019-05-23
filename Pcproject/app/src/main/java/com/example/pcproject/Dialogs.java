@@ -270,7 +270,7 @@ public class Dialogs {
     public void revecheck(final Activity act){
         con = Controller.getInstance();
         AlertDialog.Builder moveDlg = new AlertDialog.Builder(act);
-        moveDlg.setTitle("예약하신 좌석은 " +con.reveseat.getsPcname() + "입니다.");
+        moveDlg.setTitle("예약하신 좌석은 " +con.reveseat.getsPcname() + " 번                좌석입니다.");
         moveDlg.setPositiveButton("확인", null);
         moveDlg.show();
     }

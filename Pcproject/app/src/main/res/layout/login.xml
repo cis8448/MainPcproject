@@ -17,13 +17,13 @@
 
         <TextView
             android:background="#B7FFEB3B"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="51dp"
             android:gravity="center"
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PC방 로그인"
-            android:textSize="30dp"
+            android:textSize="40dp"
             android:textColor="#000000"
             android:textStyle="bold"/>
 
@@ -64,47 +64,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginTop="45dp"
         android:orientation="horizontal"
         >
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="로그인"
             android:id="@+id/loginBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="25dp"
             android:background="@drawable/usedseat"
-            android:onClick="Onclicklog"/>
+            android:onClick="Onclicklog"
+            android:text="로그인" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="회원가입"
             android:id="@+id/memberaddbtn"
-            android:background="@drawable/usedseat"
-            android:onClick="onclickmemberadd"/>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="아이디 / 비밀번호 찾기"
-            android:textSize="15dp"
-            android:id="@+id/searchbtn"
-            android:background="@drawable/reseseat"/>
+            android:textSize="25dp"
+            android:background="@drawable/usedseat"
+            android:onClick="onclickmemberadd"
+            android:text="회원가입" />
+
 
 
     </LinearLayout>
+
+
 
 </LinearLayout>

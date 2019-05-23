@@ -17,7 +17,8 @@
         android:text="한조 PC방 좌석 정보"
         android:gravity="center_horizontal"
         android:textSize="30dp"
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        android:background="#FF9800"/>
 
     <!--
     사용중인 좌석 == 하늘색
@@ -117,7 +118,7 @@
         android:layout_height="75dp"
         android:orientation="horizontal"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp">
+        android:layout_marginLeft="18dp">
 
         <LinearLayout
             android:layout_width="0dp"

@@ -13,7 +13,8 @@
         android:text="한조 PC방 상품 주문"
         android:gravity="center_horizontal"
         android:textSize="30dp"
-        android:textColor="#004ED4"/>
+        android:textColor="#FF5722"
+        android:background="#FFEB3B"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -36,7 +37,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="커피"
+            android:text="음료"
             android:layout_weight="1"
             android:background="@drawable/blankseat"
             android:onClick="onclickCate"
@@ -52,7 +53,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:text="음료"
+            android:text="간식"
             android:layout_weight="1"
             android:background="@drawable/blankseat"
             android:onClick="onclickCate"
