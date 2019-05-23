@@ -7,33 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#000000">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="메뉴"
                 android:onClick="Onclick"
-                android:id="@+id/btn1"/>
-            <FrameLayout
+                android:id="@+id/btn1"
+                android:background="#FCBB00"/>
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/frag">
-            </FrameLayout>
+                android:layout_height="155dp"
+                android:src="@drawable/pc"
+                />
+
             </FrameLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="#FFDD03">
                 <LinearLayout
+                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -41,25 +45,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1시간 1000원"/>
+                        android:text="1시간  1000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2시간 2000원"/>
+                        android:text="2시간  2000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3시간 3000원"/>
+                        android:text="3시간  3000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4시간 4000원"/>
+                        android:text="4시간  4000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5시간 5000원"/>
+                        android:text="5시간  5000원"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -67,27 +72,32 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6시간 6000원"/>
+                        android:text="6시간  6000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="7시간 7000원"/>
+                        android:text="7시간  7000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8시간 8000원"/>
+                        android:text="8시간  8000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9시간 9000원"/>
+                        android:text="9시간  9000원"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10시간 10000원"/>
+                        android:text="10시간  10000원"/>
                 </LinearLayout>
-
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:background="@drawable/song">
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
+
 </LinearLayout>

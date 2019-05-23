@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         btn1 = findViewById(R.id.btn1);
         registerForContextMenu(btn1);
         btn1.setLongClickable(false);
-        FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
-        ftrans.replace(R.id.frag,fmain);
-        ftrans.commit();
 
     }
 
