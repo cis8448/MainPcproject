@@ -242,21 +242,24 @@ public class Listsetting {
             pcusestatetxt = convertView.findViewById(R.id.pcstate);
 
             pcnumtxt.setText(allseat.get(pos).getsPcname());
-            if(allseat.get(pos).getsUsestate().equals("0")){
+            if(allseat.get(pos).getsPcstate().equals("0")){
                 pcsatetxt.setText("빈자리");
-            }else if(allseat.get(pos).getsUsestate().equals("1")){
+            }else if(allseat.get(pos).getsPcstate().equals("1")){
                 pcsatetxt.setText("예약석");
             }else{
                 pcsatetxt.setText("사용중");
             }
-            if(allseat.get(pos).getsUsestate().equals("0")){
+            if(allseat.get(pos).getsPcstate().equals("0")){
                 useridtxt.setText("");
             }else{
                 useridtxt.setText(allseat.get(pos).getsUserid());
             }
 
-
-            pcusestatetxt.setText(allseat.get(pos).getsPcstate());
+            if(allseat.get(pos).getsUsestate() == null) {
+                pcusestatetxt.setText("");
+            }else{
+                pcusestatetxt.setText(allseat.get(pos).getsUsestate());
+            }
 
             return convertView;
         }
