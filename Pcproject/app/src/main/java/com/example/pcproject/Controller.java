@@ -202,6 +202,16 @@ public class Controller extends AppCompatActivity {
 
             }
         }//회원가입처리
+        if (state.equals("updateinfo")){
+            memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getPass(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getPhone(),
+                    allmem.get(((membermanagment)mainAct).itemnum).getBirth());
+            ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
+        } //관리자 회원관리-> 회원수정 -> 입력한 수정값 바꿔주기
+        if (state.equals("memberinfoupdate")){
+            dlg.memberUpdateDailog(activity);
+        }// 로그인 -> 내정보수정 dlg
 
         // ----- 내정보 -----
         if (state.equals("myinfoupdate")) {
@@ -238,16 +248,6 @@ public class Controller extends AppCompatActivity {
             Toast.makeText(activity, "시간이 충전되었습니다.", Toast.LENGTH_SHORT).show();
             ((myinfo) activity).tvTime.setText(mybean.getRetime());
         }//적립시간추가처리
-        if (state.equals("memberinfoupdate")){
-            dlg.memberUpdateDailog(activity);
-        }// 로그인 -> 내정보수정 dlg
-        if (state.equals("updateinfo")){
-            memberDAO.updateUser(db,allmem.get(((membermanagment)mainAct).itemnum).getId(),
-                    allmem.get(((membermanagment)mainAct).itemnum).getPass(),
-                    allmem.get(((membermanagment)mainAct).itemnum).getPhone(),
-                    allmem.get(((membermanagment)mainAct).itemnum).getBirth());
-            ((membermanagment)mainAct).adapterSet.notifyDataSetChanged();
-        } //내정보수정 dlg -> 입력한 수정값 바꿔주기
         if (state.equals("revecheck")){
             int k = 0;
             allseat = seatDAO.selectall(db1);
