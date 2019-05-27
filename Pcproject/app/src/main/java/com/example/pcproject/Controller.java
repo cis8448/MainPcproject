@@ -342,6 +342,7 @@ public class Controller extends AppCompatActivity {
             selpros.clear();
             subAct.finish();
             activity.finish();
+            Toast.makeText(activity, "결제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
         }
         if (state.equals("revecheck")){
             int k = 0;
